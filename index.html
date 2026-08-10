@@ -157,14 +157,14 @@
   .about-work-text{flex:1;}
   @media(max-width:700px){.about-work-split{flex-direction:column;text-align:center;gap:24px;}.accent-round{width:170px;height:170px;}}
   .icon-strip{display:flex;justify-content:center;flex-wrap:wrap;}
-  .icon-item{flex:1 1 150px;max-width:200px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:24px 14px;border-left:1px solid var(--sand);color:var(--taupe);}
+  .icon-item{flex:1 1 150px;max-width:200px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:20px 14px;border-left:1px solid var(--sand);color:var(--taupe);}
   .icon-item:first-child{border-left:none;}
   @media(max-width:700px){
     .icon-strip{display:grid;grid-template-columns:1fr 1fr;gap:8px 4px;}
     .icon-item{border:none!important;padding:18px 10px;}
     .icon-item:nth-child(odd):last-child{grid-column:1/-1;max-width:260px;margin:0 auto;}
   }
-  .icon-item .icon-chip{width:56px;height:56px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;}
+  .icon-item .icon-chip{width:56px;height:56px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(43,52,56,.08);display:flex;align-items:center;justify-content:center;}
   .icon-item svg{width:26px;height:26px;color:var(--slate);}
   .icon-item span{font-size:13px;font-weight:500;}
   .icon-item p{font-size:12px;color:var(--taupe-soft);margin-top:4px;line-height:1.4;}
@@ -234,14 +234,24 @@
   .split-huge{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start;}
   .split-huge h2{font-size:clamp(28px,3.2vw,38px);line-height:1.18;}
   @media(max-width:760px){.split-huge{grid-template-columns:1fr;gap:24px;}}
+  @media(min-width:761px){.timeline-split{grid-template-columns:1fr 1.15fr;}}
 
   .card.plain{background:transparent;border:none;box-shadow:none;padding:0;}
   .card.plain h3{font-size:18px;margin-bottom:10px;}
+  .photo-card .card-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;margin-bottom:16px;box-shadow:0 8px 20px rgba(43,52,56,.08);}
 
   .plain-block{margin-bottom:40px;}
 
   .tag-row{display:flex;flex-wrap:wrap;gap:10px;}
   .tag{background:var(--sand);color:var(--slate-dark);font-size:13px;font-weight:500;padding:8px 16px;border-radius:999px;}
+  .insurer-panel{background:var(--cream);border-radius:24px;padding:48px 40px;max-width:760px;margin:0 auto;box-shadow:0 4px 16px rgba(43,52,56,.04);}
+  .insurer-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px 52px;}
+  .insurer-logos img{height:32px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.68;transition:filter .25s ease, opacity .25s ease;}
+  @media(hover:hover){.insurer-logos img:hover{filter:grayscale(0);opacity:1;}}
+  .insurer-divider{height:1px;background:var(--sand);margin:36px 0 28px;}
+  .insurer-also{text-align:center;font-size:17px;color:var(--taupe);line-height:1.9;}
+  .insurer-also span{color:var(--taupe);font-weight:600;display:block;margin-bottom:8px;font-size:14px;text-transform:uppercase;letter-spacing:.04em;}
+  @media(max-width:600px){.insurer-panel{padding:36px 24px;}.insurer-logos{gap:26px 30px;}.insurer-logos img{height:24px;}.insurer-also{font-size:16px;}}
   .plain-block:last-child{margin-bottom:0;}
   .plain-block h3{font-size:18px;margin-bottom:8px;}
   .plain-block p{font-size:14px;color:var(--taupe-soft);}
@@ -413,7 +423,7 @@
 
   <section class="wrap">
     <p class="eyebrow" style="text-align:center;">How we'll work together</p>
-    <div class="split-huge" style="align-items:center;grid-template-columns:1fr 1.15fr;">
+    <div class="split-huge timeline-split" style="align-items:center;">
       <img src="home-timeline.webp" alt="" class="photo-real timeline-photo" style="height:420px;">
       <div class="timeline">
         <div class="tl-item"><span class="tl-dot">1</span><div><h3>Reach out</h3><p>Send a message or call for a free 15-minute consultation, no pressure attached.</p></div></div>
@@ -860,18 +870,18 @@
   <section class="tint">
    <div class="wrap">
     <div class="grid-3">
-      <div class="card plain">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="width:32px;height:32px;color:var(--slate);margin-bottom:14px;"><circle cx="8.5" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M2.5 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M14.5 20c.4-2.6 2-4 4-4.2"/></svg>
+      <div class="card plain photo-card">
+        <img src="relationships-couples.webp" alt="Couple watching the sunset together" class="card-photo">
         <h3>Couples</h3>
         <p>Working through conflict or disconnection.</p>
       </div>
-      <div class="card plain">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="width:32px;height:32px;color:var(--slate);margin-bottom:14px;"><path d="M12 21s-6-5.7-6-11a6 6 0 1 1 12 0c0 5.3-6 11-6 11z"/><circle cx="12" cy="10" r="2.3"/></svg>
+      <div class="card plain photo-card">
+        <img src="relationships-parents.webp" alt="Parent walking hand-in-hand with a child" class="card-photo">
         <h3>Parents</h3>
         <p>Navigating a hard season with a child.</p>
       </div>
-      <div class="card plain">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="width:32px;height:32px;color:var(--slate);margin-bottom:14px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="card plain photo-card">
+        <img src="relationships-families.webp" alt="Family playing together outdoors" class="card-photo">
         <h3>Families</h3>
         <p>In ongoing conflict, seeking new patterns.</p>
       </div>
@@ -896,7 +906,7 @@
         <p class="script" style="margin-top:12px;">no surprises, just clarity</p>
       </div>
       <div>
-        <p style="color:var(--taupe-soft);font-size:16px;margin-bottom:18px;">Clear, upfront pricing so cost is never a surprise. I accept Aetna, Cigna, and Evernorth, along with cash, check, and Venmo - and every new client starts with a free 15-minute consultation.</p>
+        <p style="color:var(--taupe-soft);font-size:16px;margin-bottom:18px;">Clear, upfront pricing so cost is never a surprise. I'm in-network with most major Minnesota insurance plans, along with cash, check, and Venmo - and every new client starts with a free 15-minute consultation.</p>
         <p style="font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--slate);font-weight:600;line-height:1;">$180<span style="font-size:16px;color:var(--taupe-soft);font-family:'Kumbh Sans',sans-serif;font-weight:400;"> / session</span></p>
       </div>
     </div>
@@ -913,8 +923,7 @@
       </div>
       <div class="card plain">
         <h3>Insurance accepted</h3>
-        <p>Aetna</p>
-        <p>Cigna and Evernorth</p>
+        <p>In-network with major Minnesota plans - full list below.</p>
         <p style="font-size:12px;margin-top:14px;color:var(--sage-dark);">Cash, check, and Venmo also accepted.</p>
       </div>
       <div class="card plain">
@@ -922,6 +931,27 @@
         <p>If you're uninsured or self-pay, you have the right to receive a good faith estimate of expected costs, available upon request.</p>
       </div>
     </div>
+   </div>
+  </section>
+
+  <section class="tint">
+   <div class="wrap">
+    <p class="eyebrow" style="text-align:center;">In-network with</p>
+    <h2 style="font-size:26px;text-align:center;margin-bottom:12px;">Accepted insurance plans</h2>
+    <p style="text-align:center;font-size:15px;color:var(--taupe-soft);max-width:480px;margin:0 auto 40px;">I'm in-network with the following plans, so your visit may be covered by insurance.</p>
+    <div class="insurer-panel">
+      <div class="insurer-logos">
+        <img src="HealthPartnersLogo.png" alt="HealthPartners" loading="lazy">
+        <img src="BlueCrossLogo.png" alt="BlueCross BlueShield" loading="lazy">
+        <img src="UHLogo.svg" alt="United Healthcare" loading="lazy">
+        <img src="CignaLogo.svg" alt="Cigna" loading="lazy">
+        <img src="AetnaLogo.png" alt="Aetna" loading="lazy">
+        <img src="OptumLogo.png" alt="Optum" loading="lazy">
+      </div>
+      <div class="insurer-divider"></div>
+      <p class="insurer-also"><span>Also in-network with:</span> UCare &middot; Medicaid &middot; Medica &middot; Hennepin Health &middot; South Country Health Alliance</p>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">Don't see your plan? Reach out - self-pay options are also available.</p>
    </div>
   </section>
 
