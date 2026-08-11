@@ -12,7 +12,7 @@
 <style>
   :root{
     --sage:#7C8F6E; --sage-dark:#57694B; --sand:#E3E9EC; --cream:#FAF6EF;
-    --slate:#5B7A8C; --slate-dark:#3F5C6B; --taupe:#2B3438; --taupe-soft:#59636A;
+    --slate:#5B7A8C; --slate-dark:#3F5C6B; --taupe:#2B3438; --taupe-soft:#3D454A;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Kumbh Sans',sans-serif;background:var(--cream);color:var(--taupe);line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;}
@@ -164,20 +164,25 @@
   @media(hover:hover){.icon-item:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(43,52,56,.12);}}
   @media(max-width:900px){.icon-strip{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:700px){
-    .icon-strip{gap:16px;}
-    .icon-item{padding:24px 16px;}
-  }
-  .icon-item:first-child{border-left:none;}
-  @media(max-width:700px){
-    .icon-strip{display:grid;grid-template-columns:1fr 1fr;gap:8px 4px;}
-    .icon-item{border:none!important;padding:18px 10px;}
+    .icon-strip{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .icon-item{padding:22px 14px;}
     .icon-item:nth-child(odd):last-child{grid-column:1/-1;max-width:260px;margin:0 auto;}
   }
   .icon-item .icon-chip{width:56px;height:56px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(43,52,56,.08);display:flex;align-items:center;justify-content:center;}
   .icon-item svg{width:26px;height:26px;color:var(--slate);}
   .icon-item span{font-size:13px;font-weight:500;}
   .icon-item p{font-size:12px;color:var(--taupe-soft);margin-top:4px;line-height:1.4;}
+  .row-arrow{display:none;}
   @media(hover:hover){.icon-item:hover svg{color:var(--sage-dark);}}
+  @media(max-width:700px){
+    .areas-grid{grid-template-columns:1fr;gap:10px;}
+    .areas-grid .icon-item{flex-direction:row;text-align:left;align-items:center;gap:14px;padding:14px 18px;}
+    .areas-grid .icon-item .icon-chip{width:44px;height:44px;flex-shrink:0;}
+    .areas-grid .icon-item svg{width:20px;height:20px;}
+    .areas-grid .icon-item span{font-size:14px;}
+    .areas-grid .icon-item p{display:none;}
+    .areas-grid .row-arrow{display:inline-block;margin-left:auto;color:var(--slate);}
+  }
 
   ul.checklist{list-style:none;}
   ul.checklist li{position:relative;padding:10px 0 10px 32px;font-size:15px;color:var(--taupe-soft);line-height:1.6;}
@@ -208,7 +213,7 @@
   .img-quote .iq-text{position:relative;z-index:2;color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.4vw,34px);font-style:italic;max-width:640px;line-height:1.3;}
 
   /* compare list - Prosper-style two column check rows */
-  .compare-grid{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid rgba(43,52,56,.32);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(43,52,56,.10);}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(43,52,56,.10);}
   @media(max-width:700px){.compare-grid{grid-template-columns:1fr;}}
   .compare-col{padding:8px 0;}
   .compare-col.no{background:var(--cream);}
@@ -246,9 +251,9 @@
   @media(min-width:761px){.timeline-split{grid-template-columns:1fr 1.15fr;}}
 
   .card.plain{background:transparent;border:none;box-shadow:none;padding:0;}
-  .stat-card{background:var(--cream);border-radius:16px;padding:36px 28px;text-align:center;box-shadow:0 10px 24px rgba(43,52,56,.07);}
-  .stat-card .icon-chip{width:56px;height:56px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(43,52,56,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
-  .stat-card .icon-chip svg{width:26px;height:26px;color:var(--slate);}
+  .stat-card{background:var(--cream);border-radius:16px;padding:26px 24px;text-align:center;box-shadow:0 10px 24px rgba(43,52,56,.07);}
+  .stat-card .icon-chip{width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(43,52,56,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+  .stat-card .icon-chip svg{width:22px;height:22px;color:var(--slate);}
   .card.plain .icon-chip{width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(43,52,56,.08);display:flex;align-items:center;justify-content:center;}
   .card.plain .icon-chip svg{width:24px;height:24px;color:var(--slate);}
   .stat-card h3{margin-bottom:8px;}
@@ -259,14 +264,12 @@
 
   .tag-row{display:flex;flex-wrap:wrap;gap:10px;}
   .tag{background:var(--sand);color:var(--slate-dark);font-size:13px;font-weight:500;padding:8px 16px;border-radius:999px;}
-  .insurer-panel{background:var(--cream);border-radius:24px;padding:48px 40px;max-width:760px;margin:0 auto;box-shadow:0 4px 16px rgba(43,52,56,.04);}
-  .insurer-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px 52px;}
-  .insurer-logos img{height:32px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.68;transition:filter .25s ease, opacity .25s ease;}
-  @media(hover:hover){.insurer-logos img:hover{filter:grayscale(0);opacity:1;}}
-  .insurer-divider{height:1px;background:var(--sand);margin:36px 0 28px;}
-  .insurer-also{text-align:center;font-size:17px;color:var(--taupe);line-height:1.9;}
-  .insurer-also span{color:var(--taupe);font-weight:600;display:block;margin-bottom:8px;font-size:14px;text-transform:uppercase;letter-spacing:.04em;}
-  @media(max-width:600px){.insurer-panel{padding:36px 24px;}.insurer-logos{gap:26px 30px;}.insurer-logos img{height:24px;}.insurer-also{font-size:16px;}}
+  .insurer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:760px;margin:0 auto;}
+  .insurer-card{background:var(--cream);border-radius:16px;padding:24px 16px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(43,52,56,.06);}
+  .insurer-card img{height:30px;width:auto;object-fit:contain;}
+  .insurer-also{text-align:center;font-size:15px;color:var(--taupe-soft);line-height:1.7;margin-top:28px;}
+  .insurer-also span{color:var(--taupe);font-weight:600;display:block;margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;}
+  @media(max-width:600px){.insurer-grid{grid-template-columns:repeat(2,1fr);gap:14px;}.insurer-card{padding:18px 12px;}.insurer-card img{height:24px;}}
   .plain-block:last-child{margin-bottom:0;}
   .plain-block h3{font-size:18px;margin-bottom:8px;}
   .plain-block p{font-size:14px;color:var(--taupe-soft);}
@@ -283,18 +286,23 @@
   .step:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--sage);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;}
   .step h3{font-size:15px;margin-bottom:6px;}
   .step p{font-size:13px;color:var(--taupe-soft);}
-  .faq-card{background:var(--sand);border:2px solid var(--slate);border-radius:28px;padding:56px;}
-  @media(max-width:600px){.faq-card{padding:28px 20px;}}
-  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;}
-  @media(max-width:760px){.faq-grid{grid-template-columns:1fr;}}
+  .faq-card{background:var(--sand);border:1.5px solid rgba(91,122,140,.35);border-radius:24px;padding:40px 44px;}
+  @media(max-width:700px){.faq-card{padding:28px 20px;}}
+  .faq-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:960px;margin:0 auto;}
   .faq-group{margin-bottom:40px;}
   .faq-group:last-child{margin-bottom:0;}
-  .faq-item{border-bottom:1px solid var(--sand);transition:background .15s ease;}
-  @media(hover:hover){.faq-item:hover{background:rgba(253,251,239,.5);}}
-  .faq-item.open{background:var(--cream);border-radius:12px;border-bottom-color:transparent;box-shadow:0 4px 16px rgba(43,52,56,.06);}
-  .faq-q{width:100%;text-align:left;background:none;border:none;padding:28px 20px;font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--taupe);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .faq-group-card{background:var(--cream);border-radius:20px;padding:8px 28px 4px;box-shadow:0 8px 24px rgba(43,52,56,.05);margin-bottom:24px;}
+  .faq-group-card:last-child{margin-bottom:0;}
+  .faq-group-card .faq-item:last-child{border-bottom:none;}
+  .faq-cat{font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--sage-dark);padding:22px 0 10px;border-bottom:1px solid var(--sand);margin-bottom:2px;}
+  @media(max-width:600px){.faq-group-card{padding:6px 20px 2px;}}
+  .faq-item{border-bottom:1px solid var(--sand);transition:border-color .15s ease;}
+  @media(hover:hover){.faq-item:hover .faq-q{color:var(--slate-dark);}}
+  .faq-item.open{border-bottom-color:var(--slate);}
+  .faq-item.open .faq-q{color:var(--slate-dark);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;padding:22px 0;font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--taupe);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .15s ease;}
   .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:15px;line-height:1.7;color:var(--taupe-soft);}
-  .faq-a p{padding:0 16px 20px;}
+  .faq-a p{padding:0 24px 20px 0;}
   .faq-item.open .faq-a{max-height:260px;}
   .faq-item.open .chev{transform:rotate(180deg);color:var(--slate);}
   .chev{transition:transform .2s ease;flex-shrink:0;display:inline-flex;}
@@ -383,36 +391,42 @@
    <div class="wrap">
     <p class="eyebrow" style="text-align:center;">Areas I focus on</p>
     <h2 style="font-size:28px;text-align:center;margin-bottom:40px;">However you're struggling, there's a place to start</h2>
-    <div class="icon-strip">
+    <div class="icon-strip areas-grid">
       <a href="/services/adhd" data-link class="icon-item">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg></div>
         <span>ADHD</span>
         <p>Strategies that fit how your brain actually works</p>
+        <span class="arrow-icon row-arrow"></span>
       </a>
       <a href="/services/anxiety" data-link class="icon-item">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 9c2-2 4-2 6 0s4 2 6 0M4 15c2-2 4-2 6 0s4 2 6 0"/></svg></div>
         <span>Anxiety &amp; stress</span>
         <p>Tools to feel more like yourself again</p>
+        <span class="arrow-icon row-arrow"></span>
       </a>
       <a href="/services/relationships" data-link class="icon-item">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8.5" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M2.5 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M14.5 20c.4-2.6 2-4 4-4.2"/></svg></div>
         <span>Relationships</span>
         <p>Room for every voice at the table</p>
+        <span class="arrow-icon row-arrow"></span>
       </a>
       <a href="/services/life-transitions" data-link class="icon-item">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <span>Life transitions</span>
         <p>Support through change, wanted or not</p>
+        <span class="arrow-icon row-arrow"></span>
       </a>
       <a href="/services/trauma" data-link class="icon-item">
-        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div>
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></div>
         <span>Trauma &amp; PTSD</span>
         <p>EMDR care, moving at your pace</p>
+        <span class="arrow-icon row-arrow"></span>
       </a>
       <a href="/services" data-link class="icon-item">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21V10"/><path d="M12 10c0-3-2-5-5-5 0 3 2 5 5 5z"/><path d="M12 10c0-3 2-5 5-5 0 3-2 5-5 5z"/></svg></div>
         <span>Self-esteem &amp; grief</span>
         <p>Rebuilding confidence, one step at a time</p>
+        <span class="arrow-icon row-arrow"></span>
       </a>
     </div>
    </div>
@@ -434,6 +448,22 @@
         <p class="script" style="color:var(--sage);">- Heather</p>
       </div>
     </div>
+  </section>
+
+  <section class="tint">
+   <div class="wrap">
+    <p class="eyebrow" style="text-align:center;">Covered by insurance</p>
+    <h2 style="font-size:26px;text-align:center;margin-bottom:32px;">In-network with major Minnesota plans</h2>
+    <div class="insurer-grid">
+      <div class="insurer-card"><img src="HealthPartnersLogo.png" alt="HealthPartners" loading="lazy"></div>
+      <div class="insurer-card"><img src="BlueCrossLogo.png" alt="BlueCross BlueShield" loading="lazy"></div>
+      <div class="insurer-card"><img src="UHLogo.svg" alt="United Healthcare" loading="lazy"></div>
+      <div class="insurer-card"><img src="CignaLogo.svg" alt="Cigna" loading="lazy"></div>
+      <div class="insurer-card"><img src="AetnaLogo.png" alt="Aetna" loading="lazy"></div>
+      <div class="insurer-card"><img src="OptumLogo.png" alt="Optum" loading="lazy"></div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">See the full list of accepted plans on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
+   </div>
   </section>
 
   <section class="wrap">
@@ -509,7 +539,7 @@
         <p>Specialized trauma-focused training and certification.</p>
       </div>
       <div class="stat-card">
-        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="m9 13 2 2 4-4"/></svg></div>
         <h3>Licensed in MN</h3>
         <p>LICSW, license #33221, in good standing.</p>
       </div>
@@ -666,7 +696,7 @@
     <div class="split-huge">
       <div>
         <p class="eyebrow">Modalities I draw on</p>
-        <h2 style="font-size:26px;">Grounded in real training, not a script</h2>
+        <h2 style="font-size:26px;">Grounded in real training.</h2>
       </div>
       <div>
         <p style="color:var(--taupe-soft);margin-bottom:16px;">I move between approaches depending on what actually helps - not a fixed script every client goes through the same way. I also draw on other evidence-based approaches, like Internal Family Systems and mindfulness-based cognitive therapy, when they're the right fit.</p>
@@ -691,6 +721,22 @@
         <p style="color:var(--taupe-soft);">Most clients meet weekly, especially at the start, then move to a schedule that fits as things progress. Sessions run about 50 minutes, whether in person in Hastings or online. There's no one-size-fits-all approach here - we'll shape the work around what you actually need.</p>
       </div>
     </div>
+  </section>
+
+  <section class="tint">
+   <div class="wrap">
+    <p class="eyebrow" style="text-align:center;">Covered by insurance</p>
+    <h2 style="font-size:24px;text-align:center;margin-bottom:28px;">In-network with major Minnesota plans</h2>
+    <div class="insurer-grid">
+      <div class="insurer-card"><img src="HealthPartnersLogo.png" alt="HealthPartners" loading="lazy"></div>
+      <div class="insurer-card"><img src="BlueCrossLogo.png" alt="BlueCross BlueShield" loading="lazy"></div>
+      <div class="insurer-card"><img src="UHLogo.svg" alt="United Healthcare" loading="lazy"></div>
+      <div class="insurer-card"><img src="CignaLogo.svg" alt="Cigna" loading="lazy"></div>
+      <div class="insurer-card"><img src="AetnaLogo.png" alt="Aetna" loading="lazy"></div>
+      <div class="insurer-card"><img src="OptumLogo.png" alt="Optum" loading="lazy"></div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">See the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
+   </div>
   </section>
 
   <section>
@@ -733,6 +779,20 @@
     </div>
    </div>
   </section>
+  <section class="wrap" style="max-width:700px;">
+    <p class="eyebrow" style="text-align:center;">Common questions</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need a formal ADHD diagnosis to start?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Not at all. Many clients come in without one, just knowing something isn't working the way they want it to. We can explore whether ADHD fits as part of the work together.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is this only for kids?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>No - I work with teens and adults, and many people first recognize their ADHD patterns as adults. Sessions are shaped around where you are now, not a childhood-focused program.</p></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
+  </section>
   <section>
     <div class="cta-band">
       <h2>Curious if this fits your situation?</h2>
@@ -772,6 +832,29 @@
     </div>
    </div>
   </section>
+  <section class="wrap">
+    <div class="split-huge" style="align-items:center;">
+      <div>
+        <p class="eyebrow">Who this is for</p>
+        <h2 style="font-size:24px;">Adults navigating change, at any pace</h2>
+      </div>
+      <p style="font-size:16px;color:var(--taupe-soft);">Whether the change was your choice or not, wherever you're at right now is the right place to start. In-person in Hastings or online, individual sessions.</p>
+    </div>
+  </section>
+  <section class="wrap" style="max-width:700px;">
+    <p class="eyebrow" style="text-align:center;">Common questions</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q">What kinds of transitions do you help with?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Anything that shifts how life feels day to day - a new job, a move, becoming a parent, an empty nest, retirement, a breakup, or a loss. If it's changed your footing, it's worth talking through.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long does this kind of work usually take?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>It varies. Some clients come for a few months around a specific transition, others stay longer as new changes come up. We'll check in on pacing together.</p></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
+  </section>
   <section>
     <div class="cta-band">
       <h2>Going through a big change?</h2>
@@ -809,6 +892,20 @@
       </div>
       <img src="trauma-secondary.webp" alt="" class="photo-real" style="height:320px;">
     </div>
+  </section>
+  <section class="wrap" style="max-width:700px;">
+    <p class="eyebrow" style="text-align:center;">Common questions</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q">What is EMDR, and is it right for me?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>EMDR (Eye Movement Desensitization and Reprocessing) is a trauma-focused therapy approach that helps the brain process difficult memories so they carry less weight day to day. We'll talk through whether it's a good fit for you before diving in.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I have to talk about the details of what happened?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>No. We move at whatever pace feels safe, and EMDR in particular doesn't require you to describe the event in detail for it to work.</p></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
   <section>
     <div class="cta-band">
@@ -862,6 +959,29 @@
     </div>
    </div>
   </section>
+  <section class="wrap">
+    <div class="split-huge" style="align-items:center;">
+      <div>
+        <p class="eyebrow">Who this is for</p>
+        <h2 style="font-size:24px;">Anyone feeling stuck in the same patterns</h2>
+      </div>
+      <p style="font-size:16px;color:var(--taupe-soft);">Whether anxiety or low mood have been part of your life for years or showed up more recently, we'll start wherever you are. In-person in Hastings or online, individual sessions.</p>
+    </div>
+  </section>
+  <section class="wrap" style="max-width:700px;">
+    <p class="eyebrow" style="text-align:center;">Common questions</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q">Is this just talking about my feelings?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Not exactly. We'll talk, but the focus is on identifying what's keeping the anxiety or low mood going and building practical tools you can use between sessions, not just process feelings in the room.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How is depression different from anxiety in treatment?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>They often show up together and share some of the same tools, but we'll pay attention to your specific pattern - racing thoughts and worry call for different strategies than low motivation and flatness.</p></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
+  </section>
   <section>
     <div class="cta-band">
       <h2>Ready to feel more like yourself?</h2>
@@ -907,6 +1027,23 @@
       </div>
     </div>
    </div>
+  </section>
+  <section class="wrap" style="max-width:640px;text-align:center;padding-top:0;">
+    <p style="color:var(--taupe-soft);font-size:15px;">Sessions are available in-person in Hastings or online, in whatever combination of individual, couple, or family format fits what's going on.</p>
+  </section>
+  <section class="wrap" style="max-width:700px;">
+    <p class="eyebrow" style="text-align:center;">Common questions</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q">Do both partners need to attend every session?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Not necessarily - we can start together and bring in individual sessions if it's useful, depending on what's going on.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if my child doesn't want to come to therapy?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>That's common, and we'll talk through how to approach it. Sometimes starting with just the parent is the right first step.</p></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
   <section>
     <div class="cta-band">
@@ -962,18 +1099,15 @@
     <p class="eyebrow" style="text-align:center;">In-network with</p>
     <h2 style="font-size:26px;text-align:center;margin-bottom:12px;">Accepted insurance plans</h2>
     <p style="text-align:center;font-size:15px;color:var(--taupe-soft);max-width:480px;margin:0 auto 40px;">I'm in-network with the following plans, so your visit may be covered by insurance.</p>
-    <div class="insurer-panel">
-      <div class="insurer-logos">
-        <img src="HealthPartnersLogo.png" alt="HealthPartners" loading="lazy">
-        <img src="BlueCrossLogo.png" alt="BlueCross BlueShield" loading="lazy">
-        <img src="UHLogo.svg" alt="United Healthcare" loading="lazy">
-        <img src="CignaLogo.svg" alt="Cigna" loading="lazy">
-        <img src="AetnaLogo.png" alt="Aetna" loading="lazy">
-        <img src="OptumLogo.png" alt="Optum" loading="lazy">
-      </div>
-      <div class="insurer-divider"></div>
-      <p class="insurer-also"><span>Also in-network with:</span> UCare &middot; Medicaid &middot; Medica &middot; Hennepin Health &middot; South Country Health Alliance</p>
+    <div class="insurer-grid">
+      <div class="insurer-card"><img src="HealthPartnersLogo.png" alt="HealthPartners" loading="lazy"></div>
+      <div class="insurer-card"><img src="BlueCrossLogo.png" alt="BlueCross BlueShield" loading="lazy"></div>
+      <div class="insurer-card"><img src="UHLogo.svg" alt="United Healthcare" loading="lazy"></div>
+      <div class="insurer-card"><img src="CignaLogo.svg" alt="Cigna" loading="lazy"></div>
+      <div class="insurer-card"><img src="AetnaLogo.png" alt="Aetna" loading="lazy"></div>
+      <div class="insurer-card"><img src="OptumLogo.png" alt="Optum" loading="lazy"></div>
     </div>
+    <p class="insurer-also"><span>Also in-network with:</span> UCare &middot; Medicaid &middot; Medica &middot; Hennepin Health &middot; South Country Health Alliance</p>
     <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">Don't see your plan? Reach out - self-pay options are also available.</p>
    </div>
   </section>
@@ -1018,63 +1152,75 @@
    <div class="faq-card">
     <div class="faq-grid">
      <div class="faq-list">
-      <div class="faq-item">
+      <div class="faq-group-card">
+       <p class="faq-cat">Getting started</p>
+       <div class="faq-item">
         <button class="faq-q">What is adult therapy like with you?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>Sessions are a mix of conversation and practical work - we'll talk through what's going on, but I'll also bring in concrete tools and strategies you can use between sessions, not just talk about in them.</p></div>
-      </div>
-      <div class="faq-item">
+       </div>
+       <div class="faq-item">
         <button class="faq-q">What happens in the free consultation?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>It's a relaxed, no-pressure 15-minute conversation where we get to know each other a little and you can ask any questions you have. There's no obligation to book a full session afterward.</p></div>
-      </div>
-      <div class="faq-item">
+       </div>
+       <div class="faq-item">
         <button class="faq-q">How do I know if we're a good fit?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>The best way to find out is the free consultation. Therapy works best when you feel comfortable with your therapist, so take the time you need to decide, and don't hesitate to ask me anything.</p></div>
+       </div>
       </div>
-      <div class="faq-item">
+      <div class="faq-group-card">
+       <p class="faq-cat">Sessions &amp; logistics</p>
+       <div class="faq-item">
         <button class="faq-q">What should I expect at my first full session?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>We'll spend time getting to know each other - what's bringing you in, your current concerns, and what you're hoping will change. Rather than expecting you to have it all figured out, we'll work together to identify your goals and start building a plan that's personalized to you. There's no pressure to share everything at once - we move at whatever pace feels right, and by the end you should leave feeling heard, with a clearer sense of how we'll work together.</p></div>
-      </div>
-      <div class="faq-item">
+       </div>
+       <div class="faq-item">
         <button class="faq-q">Do you offer online sessions?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>Yes - I offer both in-person sessions in Hastings and online sessions across Minnesota, whichever works best for your schedule and comfort.</p></div>
-      </div>
-      <div class="faq-item">
+       </div>
+       <div class="faq-item">
         <button class="faq-q">How often will we meet?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>Most clients start weekly, especially early on, then shift to a schedule that fits as things progress. We'll talk about pacing together, and it can always change as your needs do.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">How long are sessions, and what do they cost?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sessions run about 50 minutes. Individual and couples sessions are $180. Visit the Rates and Insurance page for details on accepted insurance and payment options.</p></div>
+       </div>
+       <div class="faq-item">
+        <button class="faq-q">What if I need to switch between in-person and online?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>That's completely fine - many clients move between the two depending on their schedule or how they're feeling that week.</p></div>
+       </div>
       </div>
      </div>
      <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q">What's your cancellation policy?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Life happens. I ask for as much notice as possible if you need to reschedule or cancel, so I can offer that time to another client.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What ages do you work with?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>I work with children, teens, adults, and seniors, and I see individuals, couples, and families.</p></div>
-      </div>
-      <div class="faq-item">
+      <div class="faq-group-card">
+       <p class="faq-cat">Care &amp; approach</p>
+       <div class="faq-item">
         <button class="faq-q">What is EMDR, and is it right for me?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>EMDR (Eye Movement Desensitization and Reprocessing) is a trauma-focused therapy approach that helps the brain process difficult memories so they carry less weight day to day. We'll talk through whether it's a good fit for you before diving in.</p></div>
-      </div>
-      <div class="faq-item">
+       </div>
+       <div class="faq-item">
         <button class="faq-q">Do you only work with people who have a diagnosis?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>Not at all. Many people come in without a formal diagnosis, just knowing something feels off or that they want support through a hard season. We start wherever you are.</p></div>
+       </div>
+       <div class="faq-item">
+        <button class="faq-q">What ages do you work with?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>I work with children, teens, adults, and seniors, and I see individuals, couples, and families.</p></div>
+       </div>
       </div>
-      <div class="faq-item">
+      <div class="faq-group-card">
+       <p class="faq-cat">Rates, policies &amp; confidentiality</p>
+       <div class="faq-item">
+        <button class="faq-q">How long are sessions, and what do they cost?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Sessions run about 50 minutes. Individual and couples sessions are $180. Visit the Rates and Insurance page for details on accepted insurance and payment options.</p></div>
+       </div>
+       <div class="faq-item">
+        <button class="faq-q">What's your cancellation policy?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Life happens. I ask for as much notice as possible if you need to reschedule or cancel, so I can offer that time to another client.</p></div>
+       </div>
+       <div class="faq-item">
         <button class="faq-q">Is what I share confidential?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>Yes, with the standard legal and ethical exceptions therapists are required to follow (like risk of harm to yourself or others). I'll walk through confidentiality in detail during your first session.</p></div>
-      </div>
-      <div class="faq-item">
+       </div>
+       <div class="faq-item">
         <button class="faq-q">How long does therapy usually take?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
         <div class="faq-a"><p>It depends entirely on your goals. Some people come for a few months around a specific transition, others work with me for years. We'll check in regularly on progress together.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What if I need to switch between in-person and online?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>That's completely fine - many clients move between the two depending on their schedule or how they're feeling that week.</p></div>
+       </div>
       </div>
      </div>
     </div>
