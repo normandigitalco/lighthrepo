@@ -101,7 +101,7 @@
     .hero-full{min-height:92vh;align-items:stretch;flex-direction:column;justify-content:flex-end;}
     .hero-full>img{object-position:center 22%;}
     .hero-scrim{background:linear-gradient(0deg, rgba(40,58,80,.94) 0%, rgba(40,58,80,.8) 55%, rgba(40,58,80,.4) 80%, rgba(40,58,80,.15) 100%);}
-    .hero-full-inner{padding:32px 0 0;}
+    .hero-full-inner{padding-top:32px;padding-bottom:0;padding-left:24px;padding-right:24px;}
     .hero-h1{font-size:clamp(32px,9vw,46px);margin:8px 0 12px;}
     .hero-full-content p.intro{margin-bottom:20px;}
     .hero-tag{position:static;margin:14px 0 28px;display:block;max-width:max-content;padding:12px 18px;}
@@ -163,7 +163,7 @@
   .photo-real{width:100%;height:520px;object-fit:cover;border-radius:14px;box-shadow:0 8px 24px rgba(46,42,34,.1);}
   /* One-time signature moment: hard offset shadow for About's headshot only */
   .photo-signature{width:100%;height:520px;object-fit:cover;border-radius:14px;box-shadow:-18px 18px 0 0 var(--sand);}
-  @media(max-width:700px){.photo-signature{box-shadow:-10px 10px 0 0 var(--sand);}}
+  @media(max-width:700px){.photo-signature{height:380px;box-shadow:-10px 10px 0 0 var(--sand);}}
   @media(max-width:700px){.photo-real{height:280px!important;min-height:0!important;}}
   @media(max-width:700px){.timeline-photo{height:200px!important;}}
   .stat{text-align:center;padding:20px;border:1px solid rgba(40,58,80,.3);border-radius:14px;box-shadow:0 4px 16px rgba(46,42,34,.05);}
@@ -477,6 +477,7 @@
   .faq-cat{color:var(--taupe);font-size:24px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:22px 28px 18px;margin:0 0 4px;}
   @media(max-width:600px){.faq-group-card{padding:0 0 4px;}.faq-cat{padding:18px 16px 14px;}}
   .faq-hero{position:relative;overflow:hidden;padding:130px 0 100px;text-align:center;}
+  @media(max-width:700px){.faq-hero{padding:56px 0 48px;}}
   .faq-hero .wrap{position:relative;z-index:1;max-width:720px;}
   .faq-hero h1{font-size:clamp(36px,4.6vw,52px);font-weight:600;line-height:1.12;margin:16px 0 12px;}
   .faq-hero .script{display:block;margin:0 auto 20px;}
@@ -555,13 +556,6 @@
   <section class="hero-full">
     <img src="photo.webp" alt="Heather Feikema, LICSW">
     <div class="hero-scrim"></div>
-    <svg class="dot-circle" viewBox="0 0 400 400" width="380" height="380" style="left:-40px;top:40px;">
-      <g fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="200" cy="200" r="190" stroke-dasharray="2 10"/>
-        <circle cx="200" cy="200" r="160" stroke-dasharray="2 10"/>
-        <circle cx="200" cy="200" r="130" stroke-dasharray="2 10"/>
-      </g>
-    </svg>
     <div class="wrap hero-full-inner">
       <div class="hero-full-content">
         <p class="hero-subline">Based in Oakdale, MN, seeing clients in person and online.</p>
@@ -797,13 +791,6 @@
   <section class="online-photo-band">
     <img src="rates-texture.webp" alt="">
     <div class="opb-scrim"></div>
-    <svg class="dot-circle" viewBox="0 0 400 400" width="360" height="360" style="right:-60px;left:auto;top:50%;transform:translateY(-50%);opacity:.16;">
-      <g fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="200" cy="200" r="190" stroke-dasharray="2 10"/>
-        <circle cx="200" cy="200" r="160" stroke-dasharray="2 10"/>
-        <circle cx="200" cy="200" r="130" stroke-dasharray="2 10"/>
-      </g>
-    </svg>
     <div class="opb-inner">
       <h2>In-person in Oakdale, or online anywhere in Minnesota.</h2>
       <p>Being in the room together is always my first choice, but I've found telehealth just as supportive when that's what works best for your life.</p>
@@ -1541,13 +1528,6 @@
 
 <div data-view="faq">
   <section class="faq-hero tint-navy">
-    <svg class="dot-circle" viewBox="0 0 400 400" width="340" height="340" style="right:-60px;top:-30px;opacity:.25;">
-      <g fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="200" cy="200" r="190" stroke-dasharray="2 10"/>
-        <circle cx="200" cy="200" r="160" stroke-dasharray="2 10"/>
-        <circle cx="200" cy="200" r="130" stroke-dasharray="2 10"/>
-      </g>
-    </svg>
     <div class="wrap">
       <h1>FAQs before you reach out</h1>
       <span class="script">questions, answered</span>
