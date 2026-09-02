@@ -84,27 +84,33 @@
   .tint-navy .tl-item p{color:rgba(243,236,228,.92);}
   .tint-navy .card h3{color:var(--cream);}
   .tint-navy .card p{color:rgba(243,236,228,.92);}
-  /* Home hero - full-bleed photo, headline dropped directly on the image */
-  .hero-full{position:relative;min-height:96vh;display:flex;align-items:flex-end;overflow:hidden;padding:0;}
-  .hero-full>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 26%;z-index:0;}
-  .hero-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(20,20,22,.88) 0%, rgba(20,20,22,.65) 40%, rgba(20,20,22,.22) 70%, rgba(20,20,22,.06) 88%);z-index:1;}
-  .hero-full-inner{position:relative;z-index:2;padding:100px 0 110px;width:100%;}
-  .hero-full-content{max-width:600px;}
-  .hero-h1{font-size:clamp(46px,7vw,88px);line-height:1.03;margin:16px 0 20px;font-weight:600;letter-spacing:-.01em;color:#fff;}
-  .hero-subline{font-size:15px;color:rgba(243,236,228,.82);margin:0 0 16px;}
-  .hero-full-content p.intro{font-size:17px;color:rgba(243,236,228,.92);max-width:480px;margin:0 0 30px;}
-  .hero-tag{position:absolute;z-index:2;right:clamp(20px,5vw,64px);bottom:40px;background:var(--cream);border-radius:12px;padding:16px 22px;box-shadow:0 16px 36px rgba(43,52,56,.25);}
-  .hero-tag p{margin:0;}
-  .hero-tag .name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--taupe);}
-  .hero-tag .role{font-size:11px;color:var(--taupe-soft);}
+  /* Home hero - bold navy canvas, big serif headline, framed portrait.
+     Structural rule to avoid the recurring padding-shorthand bug: section-level
+     padding lives on .home-hero (the outer <section>); the element that also
+     carries .wrap (.hhs-grid, a nested <div>) never gets its own shorthand
+     padding, so .wrap's built-in side padding can never be zeroed out. */
+  .home-hero{background:var(--taupe);overflow:hidden;position:relative;padding-top:150px;padding-bottom:100px;}
+  .hhs-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.08fr;column-gap:64px;row-gap:30px;align-items:center;
+    grid-template-areas:"text photo" "cta photo";}
+  .hhs-text{grid-area:text;max-width:500px;}
+  .hhs-subline{font-size:15px;font-weight:400;color:rgba(203,218,224,.9);margin-bottom:16px;}
+  .hhs-h1{font-size:clamp(46px,6.2vw,88px);line-height:1.02;margin:0 0 22px;font-weight:600;letter-spacing:-.01em;color:var(--cream);}
+  .hhs-text p.intro{font-size:17px;color:rgba(243,236,228,.85);max-width:440px;margin:0;}
+  .hhs-cta{grid-area:cta;}
+  .hhs-photo-wrap{grid-area:photo;max-width:520px;margin:0 0 0 auto;}
+  .hhs-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;border:7px solid var(--slate);box-shadow:0 30px 60px rgba(15,20,30,.4);display:block;}
+  .hhs-caption{display:flex;align-items:baseline;gap:10px;margin-top:18px;}
+  .hhs-caption .name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);}
+  .hhs-caption .role{font-size:12px;color:rgba(243,236,228,.6);}
+  .hhs-caption .divider{width:5px;height:5px;border-radius:50%;background:var(--slate);flex-shrink:0;}
   @media(max-width:860px){
-    .hero-full{min-height:92vh;align-items:stretch;flex-direction:column;justify-content:flex-end;}
-    .hero-full>img{object-position:center 22%;}
-    .hero-scrim{background:linear-gradient(0deg, rgba(20,20,22,.9) 0%, rgba(20,20,22,.75) 55%, rgba(20,20,22,.35) 80%, rgba(20,20,22,.12) 100%);}
-    .hero-full-inner{padding-top:32px;padding-bottom:0;padding-left:24px;padding-right:24px;}
-    .hero-h1{font-size:clamp(32px,9vw,46px);margin:8px 0 12px;}
-    .hero-full-content p.intro{margin-bottom:20px;}
-    .hero-tag{position:static;margin:14px 0 28px 24px;display:block;max-width:max-content;padding:12px 18px;}
+    .home-hero{padding-top:112px;padding-bottom:64px;}
+    .hhs-grid{grid-template-columns:1fr;row-gap:32px;grid-template-areas:"text" "photo" "cta";}
+    .hhs-text{max-width:100%;}
+    .hhs-text p.intro{max-width:100%;}
+    .hhs-photo-wrap{max-width:360px;margin:0 auto;}
+    .hhs-caption{justify-content:center;}
+    .hhs-cta{margin-top:14px;text-align:center;}
   }
 
   .page-bleed{background:var(--sand);overflow:hidden;}
@@ -402,6 +408,23 @@
   .badge-row{display:flex;justify-content:center;padding:0 28px;margin-top:-28px;position:relative;z-index:2;}
   @media(max-width:760px){.badge-row{padding:0;margin-top:-34px;}}
 
+  /* Circle photo trio - Soul's Nest style, three round photos with prose beneath, no cards/borders */
+  .circle-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:52px;max-width:1080px;margin:0 auto;}
+  .circle-trio-item{text-align:center;}
+  .circle-trio-item .ct-photo{width:100%;aspect-ratio:1/1;border-radius:50%;object-fit:cover;box-shadow:0 20px 44px rgba(43,52,56,.18);margin-bottom:28px;}
+  .circle-trio-item p{color:var(--taupe-soft);font-size:15px;line-height:1.7;max-width:280px;margin:0 auto;}
+  @media(max-width:820px){.circle-trio{grid-template-columns:1fr;gap:44px;max-width:340px;}}
+
+  /* Dark feature band - full-bleed navy canvas, big serif headline, framed photo (Soul's Nest inner-page hero style) */
+  .dark-feature-band{background:var(--taupe);padding:130px 0;overflow:hidden;}
+  .dfb-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+  .dfb-copy .eyebrow{color:#CBDAE0;}
+  .dfb-h1{color:var(--cream);font-size:clamp(40px,5.2vw,64px);line-height:1.08;margin:14px 0 20px;font-weight:600;}
+  .dfb-copy p{color:rgba(243,236,228,.82);font-size:17px;max-width:440px;margin-bottom:28px;}
+  .dfb-photo-wrap{position:relative;}
+  .dfb-photo{width:100%;height:460px;object-fit:cover;border:7px solid var(--slate);box-shadow:0 30px 60px rgba(15,20,30,.4);display:block;}
+  @media(max-width:860px){.dark-feature-band{padding:80px 0;}.dfb-grid{grid-template-columns:1fr;gap:32px;text-align:center;}.dfb-copy p{margin-left:auto;margin-right:auto;}.dfb-photo{height:320px;}}
+
   /* Rates page - asymmetric hero, no longer a centered stack */
   .rates-hero{display:flex;align-items:center;gap:64px;padding-top:110px;padding-bottom:110px;min-height:620px;}
   .rates-hero-text{flex:1 1 46%;}
@@ -603,18 +626,21 @@
 <main>
 
 <div data-view="home">
-  <section class="hero-full">
-    <img src="photo.webp" alt="Heather Feikema, LICSW">
-    <div class="hero-scrim"></div>
-    <div class="wrap hero-full-inner">
-      <div class="hero-full-content">
-        <p class="hero-subline">Based in Oakdale, MN, seeing clients in person and online.</p>
-        <h1 class="hero-h1">A Space To Notice, <br class="hero-break">And To Grow</h1>
+  <section class="home-hero">
+    <div class="wrap hhs-grid">
+      <div class="hhs-text">
+        <p class="hhs-subline">Based in Oakdale, MN &middot; In person &amp; online</p>
+        <h1 class="hhs-h1">A Space To Notice, <br class="hero-break">And To Grow</h1>
         <p class="intro">Therapy for teens, adults, and families navigating ADHD, life transitions, trauma, and more - with warmth, curiosity, and practical tools for lasting change.</p>
+      </div>
+      <div class="hhs-photo-wrap">
+        <img src="photo.webp" alt="Heather Feikema, LICSW" class="hhs-photo">
+        <p class="hhs-caption"><span class="name">Heather Feikema</span><span class="divider"></span><span class="role">LICSW, Licensed Therapist</span></p>
+      </div>
+      <div class="hhs-cta">
         <a href="/contact" class="btn" data-link>Book a free consultation</a>
       </div>
     </div>
-    <div class="hero-tag"><p class="name">Heather Feikema</p><p class="role">LICSW, Licensed Therapist</p></div>
   </section>
 
   <section class="wrap" style="padding-top:48px;padding-bottom:16px;">
@@ -969,32 +995,23 @@
     </div>
   </div>
 
-  <section class="wrap">
-    <div class="grid-2">
-      <img src="relationships-families.webp" alt="" class="photo-real">
-      <div>
-        <h2 style="font-size:clamp(28px,3.2vw,34px);margin-bottom:14px;">Meeting you wherever you are</h2>
-        <p style="color:var(--taupe-soft);">Whatever stage of life you're in - <strong style="color:var(--taupe);">children, teens, adults, or seniors</strong> - we'll work at a pace that fits it. Sessions can be <strong style="color:var(--taupe);">individual, couples, or family</strong>, with whoever needs to be in the room welcome in the room, drawing on real, established approaches like <strong style="color:var(--taupe);">CBT and EMDR</strong>, chosen based on what actually fits you.</p>
-      </div>
+  <section class="wrap section-statement">
+    <div style="text-align:center;max-width:640px;margin:0 auto 56px;">
+      <h2 style="font-size:clamp(28px,3.2vw,34px);margin-bottom:14px;">Meeting you wherever you are</h2>
+      <p style="color:var(--taupe-soft);font-size:17px;">Whatever stage of life you're in, and whatever approach fits best - the work is shaped around you, not a fixed script.</p>
     </div>
-  </section>
-
-  <section class="wrap">
-    <div class="split-huge" style="align-items:center;">
-      <div>
-        <h2 style="font-size:clamp(28px,3.2vw,34px);margin-bottom:14px;">Grounded in real training.</h2>
-        <p style="color:var(--taupe-soft);margin-bottom:16px;">I move between approaches depending on what actually helps - not a fixed script every client goes through the same way. My core toolkit draws on <strong style="color:var(--taupe);">CBT, EMDR, Solution-Focused Therapy, and attachment-based and family systems work</strong>, and I also bring in other evidence-based approaches, like Internal Family Systems and mindfulness-based cognitive therapy, when they're the right fit.</p>
+    <div class="circle-trio">
+      <div class="circle-trio-item">
+        <img src="relationships-families.webp" alt="" class="ct-photo">
+        <p><strong style="color:var(--taupe);">Every stage of life.</strong> Children, teens, adults, or seniors - sessions can be individual, couples, or family, with whoever needs to be in the room welcome in the room.</p>
       </div>
-      <img src="about-credentials.webp" alt="" class="photo-real" style="height:340px;">
-    </div>
-  </section>
-
-  <section class="wrap">
-    <div class="split-huge" style="align-items:center;">
-      <img src="therapy-sessions.webp" alt="" class="photo-real" style="height:380px;">
-      <div>
-        <h2 style="font-size:clamp(28px,3.2vw,34px);margin-bottom:14px;">Steady, and shaped around you</h2>
-        <p style="color:var(--taupe-soft);">Most clients meet weekly, especially at the start, then move to a schedule that fits as things progress. Sessions run about 50 minutes, whether in person in Oakdale or online. There's no one-size-fits-all approach here - we'll shape the work around what you actually need.</p>
+      <div class="circle-trio-item">
+        <img src="about-credentials.webp" alt="" class="ct-photo">
+        <p><strong style="color:var(--taupe);">Real, established training.</strong> My core toolkit draws on CBT, EMDR, Solution-Focused Therapy, and attachment-based and family systems work, plus IFS and mindfulness-based approaches when they fit.</p>
+      </div>
+      <div class="circle-trio-item">
+        <img src="therapy-sessions.webp" alt="" class="ct-photo">
+        <p><strong style="color:var(--taupe);">A steady rhythm.</strong> Most clients meet weekly at first, then shift to a schedule that fits as things progress. Sessions run about 50 minutes, in person in Oakdale or online.</p>
       </div>
     </div>
   </section>
@@ -1745,14 +1762,17 @@
 </div>
 
 <div data-view="contact">
-  <section class="wrap">
-    <div class="about-work-split">
-      <div class="about-work-text">
-        <h1 style="font-size:32px;margin:14px 0 10px;">Let's find a time to talk</h1>
-        <span class="script" style="display:block;margin-bottom:16px;">no pressure, just a conversation</span>
-        <p style="color:var(--taupe-soft);">Reach out for a free 15-minute consultation. No pressure, just a chance to see if we're a good fit - and no obligation to book anything further afterward.</p>
+  <section class="dark-feature-band">
+    <div class="wrap dfb-grid">
+      <div class="dfb-copy">
+        <p class="eyebrow">Get in touch</p>
+        <h1 class="dfb-h1">Let's find a time to talk.</h1>
+        <p>Reach out for a free 15-minute consultation - no pressure, just a chance to see if we're a good fit, with no obligation to book anything further afterward.</p>
+        <a href="tel:6513218943" class="btn" style="background:transparent;border:1.5px solid var(--cream);color:var(--cream);">Call 651-321-8943</a>
       </div>
-      <img src="contact-photo.webp" alt="" class="accent-round">
+      <div class="dfb-photo-wrap">
+        <img src="contact-photo.webp" alt="" class="dfb-photo">
+      </div>
     </div>
   </section>
 
