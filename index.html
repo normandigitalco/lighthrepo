@@ -87,7 +87,7 @@
   /* Home hero - full-bleed photo, headline dropped directly on the image */
   .hero-full{position:relative;min-height:96vh;display:flex;align-items:flex-end;overflow:hidden;padding:0;}
   .hero-full>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 26%;z-index:0;}
-  .hero-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(40,58,80,.92) 0%, rgba(40,58,80,.7) 40%, rgba(40,58,80,.25) 70%, rgba(40,58,80,.08) 88%);z-index:1;}
+  .hero-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(20,20,22,.88) 0%, rgba(20,20,22,.65) 40%, rgba(20,20,22,.22) 70%, rgba(20,20,22,.06) 88%);z-index:1;}
   .hero-full-inner{position:relative;z-index:2;padding:100px 0 110px;width:100%;}
   .hero-full-content{max-width:600px;}
   .hero-h1{font-size:clamp(46px,7vw,88px);line-height:1.03;margin:16px 0 20px;font-weight:600;letter-spacing:-.01em;color:#fff;}
@@ -100,28 +100,80 @@
   @media(max-width:860px){
     .hero-full{min-height:92vh;align-items:stretch;flex-direction:column;justify-content:flex-end;}
     .hero-full>img{object-position:center 22%;}
-    .hero-scrim{background:linear-gradient(0deg, rgba(40,58,80,.94) 0%, rgba(40,58,80,.8) 55%, rgba(40,58,80,.4) 80%, rgba(40,58,80,.15) 100%);}
+    .hero-scrim{background:linear-gradient(0deg, rgba(20,20,22,.9) 0%, rgba(20,20,22,.75) 55%, rgba(20,20,22,.35) 80%, rgba(20,20,22,.12) 100%);}
     .hero-full-inner{padding-top:32px;padding-bottom:0;padding-left:24px;padding-right:24px;}
     .hero-h1{font-size:clamp(32px,9vw,46px);margin:8px 0 12px;}
     .hero-full-content p.intro{margin-bottom:20px;}
-    .hero-tag{position:static;margin:14px 0 28px;display:block;max-width:max-content;padding:12px 18px;}
+    .hero-tag{position:static;margin:14px 0 28px 24px;display:block;max-width:max-content;padding:12px 18px;}
   }
 
   .page-bleed{background:var(--sand);overflow:hidden;}
   .bleed-flex{display:flex;align-items:stretch;min-height:440px;}
   .bleed-copy{flex:0 0 46%;display:flex;flex-direction:column;justify-content:center;padding:56px 40px;}
-  .bleed-photo{flex:1;width:100%;object-fit:cover;display:block;}
+  .bleed-photo-wrap{position:relative;flex:1;overflow:hidden;}
+  .bleed-photo-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
   .bleed-left{flex-direction:row-reverse;}
-  .bleed-left .bleed-photo{border-radius:0 28px 28px 0;}
-  .bleed-right .bleed-photo{border-radius:28px 0 0 28px;}
+  .bleed-left .bleed-photo-wrap img{border-radius:0 28px 28px 0;}
+  .bleed-right .bleed-photo-wrap img{border-radius:28px 0 0 28px;}
   @media(max-width:860px){
     .bleed-flex, .bleed-left{flex-direction:column;min-height:auto;}
     .bleed-copy{flex:none;padding:40px 24px;text-align:center;align-items:center;}
     .bleed-copy .eyebrow{justify-content:center;}
     .bleed-copy h1, .bleed-copy p{text-align:center;}
-    .bleed-photo{height:260px;border-radius:0!important;}
+    .bleed-photo-wrap{height:260px;}
+    .bleed-photo-wrap img{border-radius:0!important;}
   }
   .trust-strip{background:var(--cream);padding-top:36px!important;padding-bottom:36px!important;border-bottom:1px solid var(--sand);}
+  .overlap-hero{position:relative;display:flex;align-items:center;min-height:480px;}
+  .oh-photo{width:62%;height:480px;object-fit:cover;box-shadow:0 24px 50px rgba(43,52,56,.2);display:block;}
+  .oh-card{position:relative;margin-left:-16%;background:#fff;border-radius:4px;padding:48px 44px;box-shadow:0 30px 60px rgba(43,52,56,.16);max-width:440px;z-index:2;}
+  .oh-card h1{font-size:clamp(32px,3.6vw,44px);margin-bottom:16px;}
+  .oh-card p{color:var(--taupe-soft);font-size:17px;margin-bottom:28px;}
+  @media(max-width:860px){
+    .overlap-hero{flex-direction:column;min-height:auto;}
+    .oh-photo{width:100%;height:320px;}
+    .oh-card{margin-left:0;margin-top:-56px;width:calc(100% - 40px);max-width:none;padding:32px 28px;text-align:center;}
+  }
+
+  /* Life transitions hero - full-bleed photo, bottom-up scrim */
+  .specialty-hero-bleed{position:relative;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;}
+  .specialty-hero-bleed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .specialty-hero-bleed .shb-scrim{position:absolute;inset:0;background:linear-gradient(0deg, rgba(40,58,80,.9) 0%, rgba(40,58,80,.5) 55%, rgba(40,58,80,.08) 100%);}
+  .specialty-hero-bleed .shb-inner{position:relative;z-index:2;padding-top:56px;padding-bottom:56px;}
+  .specialty-hero-bleed .subpage-back{align-self:flex-start;}
+  .specialty-hero-bleed h1{color:#fff;font-size:clamp(40px,5.5vw,64px);margin:16px 0 14px;}
+  .specialty-hero-bleed p{color:rgba(243,236,228,.92);font-size:17px;max-width:480px;}
+  @media(max-width:760px){.specialty-hero-bleed{min-height:480px;}.specialty-hero-bleed h1{font-size:clamp(34px,9vw,48px);}}
+
+  /* Anxiety hero - arched photo frame, contemplative */
+  .arch-hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:56px 0 72px;}
+  .arch-frame{width:100%;height:520px;object-fit:cover;border-radius:50%/18%;box-shadow:0 30px 60px rgba(43,52,56,.18);}
+  .arch-hero-copy h1{font-size:clamp(40px,5vw,58px);margin:16px 0 16px;}
+  .arch-hero-copy p{font-size:17px;color:var(--taupe-soft);max-width:440px;}
+  @media(max-width:860px){.arch-hero{grid-template-columns:1fr;gap:32px;padding-top:32px;text-align:center;}.arch-frame{height:340px;border-radius:50%/22%;}.arch-hero-copy p{margin:0 auto;}.arch-hero-copy .subpage-back{margin-left:auto;margin-right:auto;}}
+
+  /* Young adults hero - bold asymmetric collage */
+  .yad-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;padding:56px 0 72px;}
+  .yad-collage{position:relative;height:560px;width:100%;}
+  .yad-collage .yc-main{position:absolute;top:0;left:10%;width:66%;height:78%;object-fit:cover;box-shadow:0 24px 50px rgba(43,52,56,.22);}
+  .yad-collage .yc-block{position:absolute;bottom:0;right:0;width:52%;height:46%;background:var(--slate);z-index:0;}
+  .yad-collage .yc-second{position:absolute;bottom:0;right:0;width:44%;height:38%;object-fit:cover;box-shadow:0 20px 40px rgba(43,52,56,.2);z-index:1;}
+  .yad-hero-copy h1{font-size:clamp(38px,4.8vw,54px);margin:16px 0 16px;line-height:1.05;}
+  .yad-hero-copy p{font-size:17px;color:var(--taupe-soft);max-width:440px;}
+  @media(max-width:860px){.yad-hero{grid-template-columns:1fr;gap:36px;padding-top:32px;text-align:center;}.yad-collage{height:400px;width:100%;max-width:340px;margin:0 auto;}.yad-hero-copy p{margin:0 auto;}.yad-hero-copy .subpage-back{margin-left:auto;margin-right:auto;}}
+  .specialty-editorial-hero{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;margin-top:24px;}
+  .seh-title{font-size:clamp(56px,8vw,104px);line-height:.95;margin:20px 0 24px;letter-spacing:-.01em;}
+  .seh-copy p{font-size:18px;color:var(--taupe-soft);max-width:400px;margin-bottom:32px;}
+  .seh-photo{position:relative;}
+  .seh-block{position:absolute;top:-28px;right:-28px;width:65%;height:55%;background:var(--slate);z-index:0;}
+  .seh-photo img{position:relative;z-index:1;width:100%;height:640px;object-fit:cover;border:6px solid var(--taupe);box-shadow:0 30px 60px rgba(43,52,56,.22);display:block;}
+  @media(max-width:860px){
+    .specialty-editorial-hero{grid-template-columns:1fr;gap:32px;text-align:center;}
+    .seh-title{font-size:clamp(44px,14vw,64px);}
+    .seh-copy p{margin-left:auto;margin-right:auto;}
+    .seh-block{width:70%;height:60%;top:-16px;right:-16px;}
+    .seh-photo img{height:380px;}
+  }
   .wave-divider{max-width:340px;margin:0 auto;padding:32px 28px 0;}
   .wave-divider svg{width:100%;height:auto;display:block;}
   .page-hero{padding-top:120px;padding-bottom:64px;text-align:center;}
@@ -234,11 +286,11 @@
   /* Full-bleed final CTA, Home-specific */
   .online-photo-band{position:relative;min-height:840px;display:flex;align-items:center;overflow:hidden;}
   .online-photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;}
-  .online-photo-band .opb-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(40,58,80,.86) 0%, rgba(40,58,80,.58) 45%, rgba(40,58,80,.15) 80%);}
+  .online-photo-band .opb-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(20,20,22,.82) 0%, rgba(20,20,22,.52) 45%, rgba(20,20,22,.12) 80%);}
   .online-photo-band .opb-inner{position:relative;z-index:2;max-width:560px;padding:56px clamp(28px,5vw,64px);}
   .online-photo-band h2{color:#fff;font-size:clamp(28px,3.4vw,40px);margin-bottom:18px;line-height:1.2;}
   .online-photo-band p{color:rgba(243,236,228,.9);font-size:16px;margin-bottom:28px;}
-  @media(max-width:760px){.online-photo-band{min-height:600px;}.online-photo-band .opb-scrim{background:linear-gradient(180deg, rgba(40,58,80,.35) 0%, rgba(40,58,80,.88) 65%);}.online-photo-band .opb-inner{max-width:100%;padding:32px 24px;}}
+  @media(max-width:760px){.online-photo-band{min-height:600px;}.online-photo-band .opb-scrim{background:linear-gradient(180deg, rgba(20,20,22,.3) 0%, rgba(20,20,22,.85) 65%);}.online-photo-band .opb-inner{max-width:100%;padding:32px 24px;}}
   .insurer-strip{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;max-width:900px;margin:0 auto;}
   .insurer-box{width:172px;height:84px;border:1px solid rgba(40,58,80,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--cream);padding:14px;box-sizing:border-box;}
   .insurer-box img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
@@ -286,8 +338,6 @@
   @media(max-width:700px){.dark-index{grid-template-columns:1fr;gap:0;}}
 
   .specialty-photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1080px;margin:0 auto;}
-  .specialty-photo-grid>a:nth-child(2){margin-top:52px;}
-  .specialty-photo-grid>a:nth-child(5){margin-top:-52px;}
   .spg-item{position:relative;display:block;overflow:hidden;text-decoration:none;height:380px;border-radius:10px;box-shadow:0 24px 44px rgba(15,20,30,.35);}
   .spg-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
   .spg-scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,26,36,0) 38%, rgba(15,20,30,.92) 100%);}
@@ -295,7 +345,7 @@
   .spg-label h3{color:#fff;font-size:21px;margin-bottom:6px;font-weight:600;}
   .spg-label p{color:rgba(243,236,228,.85);font-size:13.5px;margin:0;}
   @media(hover:hover){.spg-item:hover img{transform:scale(1.06);}}
-  @media(max-width:900px){.specialty-photo-grid{grid-template-columns:1fr 1fr;}.specialty-photo-grid>a:nth-child(2),.specialty-photo-grid>a:nth-child(5){margin-top:0;}}
+  @media(max-width:900px){.specialty-photo-grid{grid-template-columns:1fr 1fr;}}
   @media(max-width:600px){.specialty-photo-grid{grid-template-columns:1fr;}.spg-item{height:280px;}}
 
   ul.checklist{list-style:none;}
@@ -792,7 +842,7 @@
     <img src="rates-texture.webp" alt="">
     <div class="opb-scrim"></div>
     <div class="opb-inner">
-      <h2>In-person in Oakdale, or online anywhere in Minnesota.</h2>
+      <h2>In person in Oakdale, or online anywhere in Minnesota.</h2>
       <p>Being in the room together is always my first choice, but I've found telehealth just as supportive when that's what works best for your life.</p>
       <a href="/contact" class="btn" style="background:var(--cream);color:var(--taupe);" data-link>Ask me a question</a>
     </div>
@@ -979,28 +1029,40 @@
 </div>
 
 <div data-view="services-adhd">
-  <section class="page-hero wrap">
+  <section class="wrap" style="padding-top:64px;padding-bottom:80px;">
     <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
-    <h1>ADHD</h1>
-    <p>Practical, individualized support for focus, follow-through, and self-understanding - built around how your brain actually works, not a generic checklist.</p>
-  </section>
-  <section class="wrap">
-    <div class="grid-2">
-      <img src="therapy-adhd.webp" alt="A calm space to focus" class="photo-real">
-      <div>
-        <p style="color:var(--taupe-soft);">ADHD looks different for everyone - scattered focus, trouble finishing what you start, feeling overwhelmed by tasks that seem simple to others. We'll work together to understand your specific patterns, not just apply a generic checklist.</p>
+    <div class="specialty-editorial-hero">
+      <div class="seh-copy">
+        <h1 class="seh-title">ADHD</h1>
+        <p>Practical, individualized support for focus, follow-through, and self-understanding - built around how your brain actually works.</p>
+        <a href="/contact" class="btn" data-link>Book a free consultation</a>
+      </div>
+      <div class="seh-photo">
+        <div class="seh-block"></div>
+        <img src="therapy-adhd.webp" alt="">
       </div>
     </div>
   </section>
-  <section class="wrap">
+
+  <section class="wrap" style="max-width:720px;padding-top:20px;padding-bottom:60px;">
+    <p style="font-size:18px;color:var(--taupe-soft);text-align:center;">ADHD looks different for everyone - scattered focus, trouble finishing what you start, feeling overwhelmed by tasks that seem simple to others. We'll spend time understanding your specific patterns rather than working from a generic checklist.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0;">
     <div class="split-huge" style="align-items:center;">
       <div>
-        <h2 style="margin-bottom:14px;">Teens and adults, at any stage</h2>
-        <p style="font-size:16px;color:var(--taupe-soft);">Whether you were just diagnosed or have known for years and want a different kind of support, we'll start wherever you are - in-person in Oakdale or online. In practice, that means <strong>understanding your patterns</strong> - how ADHD actually shows up for you, not a textbook version - <strong>building systems that fit</strong> the way your brain actually works instead of fighting it, and <strong>managing what tends to ride along</strong>, like the anxiety and self-criticism that often come with it.</p>
+        <h2 style="margin-bottom:18px;">Teens and adults, at any stage</h2>
+        <p style="font-size:16px;color:var(--taupe-soft);margin-bottom:24px;">Newly diagnosed, or known for years and looking for something different - we'll start wherever you are, in person in Oakdale or online. In practice, that looks like:</p>
+        <ul class="plain-list">
+          <li><strong style="color:var(--taupe);">Understanding your patterns</strong> - how ADHD actually shows up for you, not a textbook version.</li>
+          <li><strong style="color:var(--taupe);">Building systems that fit</strong> the way your brain works, instead of fighting it.</li>
+          <li><strong style="color:var(--taupe);">Managing what tends to come with it</strong> - the anxiety and self-criticism that often ride along.</li>
+        </ul>
       </div>
-      <img src="home-timeline.webp" alt="" class="photo-real" style="height:360px;">
+      <img src="home-timeline.webp" alt="" class="photo-real" style="height:440px;">
     </div>
   </section>
+
   <section class="wrap" style="max-width:700px;">
     <h2 style="font-size:clamp(28px,3.2vw,34px);text-align:center;margin-bottom:32px;">Common questions</h2>
     <div>
@@ -1014,7 +1076,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">How is this different from typical talk therapy?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>We'll definitely talk, but sessions also focus on building concrete systems and strategies - not just processing feelings, but walking out with tools you can actually use.</p></div>
+        <div class="faq-a"><p>We'll definitely talk, but sessions also focus on building concrete systems and strategies you can actually put to use between sessions.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Can this help if medication hasn't been enough on its own?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
@@ -1023,20 +1085,29 @@
     </div>
     <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
-  <section>
-    <div class="cta-band">
-      <h2>Curious if this fits your situation?</h2>
-      <p>A free 15-minute consultation is a low-pressure way to find out.</p>
-      <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+
+  <section class="cta-card-section">
+    <div class="cta-card">
+      <img src="contact-hours.webp" alt="">
+      <div class="cc-scrim"></div>
+      <div class="cc-inner">
+        <h2>Curious if this fits your situation?</h2>
+        <p>A free 15-minute consultation is a low-pressure way to find out.</p>
+        <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+      </div>
     </div>
   </section>
 </div>
 
 <div data-view="services-life-transitions">
-  <section class="page-hero wrap">
-    <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
-    <h1>Life transitions</h1>
-    <p>Support through change, big or small, at any stage of life - whether it's a change you chose or one that chose you.</p>
+  <section class="specialty-hero-bleed">
+    <img src="therapy-transitions.webp" alt="">
+    <div class="shb-scrim"></div>
+    <div class="wrap shb-inner">
+      <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
+      <h1>Life transitions</h1>
+      <p>Support through change, big or small, at any stage of life - whether it's a change you chose or one that chose you.</p>
+    </div>
   </section>
   <section class="wrap">
     <div class="grid-2">
@@ -1048,7 +1119,7 @@
           <li>Build coping tools that carry you through whatever comes next</li>
         </ul>
       </div>
-      <img src="therapy-transitions.webp" alt="A new season" class="photo-real">
+      <img src="relationships-parents.webp" alt="" class="photo-real">
     </div>
   </section>
   <section class="wrap">
@@ -1087,29 +1158,35 @@
     </div>
     <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
-  <section>
-    <div class="cta-band">
-      <h2>Going through a big change?</h2>
-      <p>A free 15-minute consultation is a low-pressure way to find out if I can help.</p>
-      <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+  <section class="cta-card-section">
+    <div class="cta-card">
+      <img src="home-timeline.webp" alt="">
+      <div class="cc-scrim"></div>
+      <div class="cc-inner">
+        <h2>Going through a big change?</h2>
+        <p>A free 15-minute consultation is a low-pressure way to find out if I can help.</p>
+        <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+      </div>
     </div>
   </section>
 </div>
 
 <div data-view="services-trauma">
-  <section class="page-hero wrap">
-    <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
-    <h1>Trauma and PTSD</h1>
-    <p>Trauma-focused care, including EMDR, in a safe and steady space - moving at whatever pace actually feels okay for you.</p>
-  </section>
-  <section class="wrap">
-    <div class="grid-2">
-      <img src="therapy-trauma.webp" alt="Steadiness and balance" class="photo-real">
+  <section class="wrap" style="padding-top:56px;padding-bottom:64px;">
+    <div class="grid-2" style="align-items:center;gap:64px;">
+      <div class="offset-duo" style="margin:0 auto;max-width:420px;">
+        <img src="therapy-trauma.webp" alt="" class="op-main">
+        <img src="trauma-secondary.webp" alt="" class="op-secondary">
+      </div>
       <div>
-        <p style="color:var(--taupe-soft);margin-bottom:14px;">Trauma can shape how safe the world feels long after the event itself is over. I'm trained in both EMDR and TF-CBT, two of the most well-supported approaches for helping the brain and body process difficult memories.</p>
-        <p style="color:var(--taupe-soft);">We move at a pace that feels safe for you - there's no requirement to share every detail before you're ready.</p>
+        <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
+        <h1 style="margin-top:16px;">Trauma and PTSD</h1>
+        <p style="color:var(--taupe-soft);">Trauma-focused care, including EMDR, in a safe and steady space - moving at whatever pace actually feels okay for you.</p>
       </div>
     </div>
+  </section>
+  <section class="wrap" style="max-width:720px;padding-top:0;">
+    <p style="color:var(--taupe-soft);font-size:17px;text-align:center;margin-bottom:8px;">Trauma can shape how safe the world feels long after the event itself is over. I'm trained in both EMDR and TF-CBT, two of the most well-supported approaches for helping the brain and body process difficult memories. We move at a pace that feels safe for you - there's no requirement to share every detail before you're ready.</p>
   </section>
   <section class="wrap">
     <div class="split-huge" style="align-items:center;">
@@ -1121,7 +1198,7 @@
           <div class="def-item" style="border-bottom:none;"><h3>Format</h3><p>In-person in Oakdale or online, individual sessions, moving entirely at your pace.</p></div>
         </div>
       </div>
-      <img src="trauma-secondary.webp" alt="" class="photo-real" style="height:460px;">
+      <img src="contact-hours.webp" alt="" class="photo-real" style="height:460px;">
     </div>
   </section>
   <section class="wrap" style="max-width:700px;">
@@ -1146,29 +1223,35 @@
     </div>
     <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
-  <section>
-    <div class="cta-band">
-      <h2>Ready to talk it through?</h2>
-      <p>A free 15-minute consultation is a low-pressure first step.</p>
-      <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+  <section class="cta-card-section">
+    <div class="cta-card">
+      <img src="trauma-secondary.webp" alt="">
+      <div class="cc-scrim"></div>
+      <div class="cc-inner">
+        <h2>Ready to talk it through?</h2>
+        <p>A free 15-minute consultation is a low-pressure first step.</p>
+        <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+      </div>
     </div>
   </section>
 </div>
 
 <div data-view="services-anxiety">
-  <section class="page-hero wrap">
+  <section class="wrap" style="padding-bottom:0;">
     <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
-    <h1>Anxiety and depression</h1>
-    <p>Practical tools grounded in CBT and mindfulness to help you feel more like yourself - not just talk through it, but actually build a way out of it.</p>
   </section>
-  <section class="wrap">
-    <div class="grid-2">
-      <div>
-        <p style="color:var(--taupe-soft);margin-bottom:14px;">Whether it's constant worry, low motivation, or feeling disconnected from things you used to enjoy, anxiety and depression can make daily life feel heavier than it should.</p>
-        <p style="color:var(--taupe-soft);">Using CBT and mindfulness-based approaches, we'll identify the patterns keeping you stuck and build practical tools you can use between sessions, not just talk about in them.</p>
+  <section class="wrap" style="padding-top:16px;padding-bottom:88px;">
+    <div class="overlap-hero">
+      <img src="therapy-anxiety.webp" alt="" class="oh-photo">
+      <div class="oh-card">
+        <h1>Anxiety and depression</h1>
+        <p>Practical tools grounded in CBT and mindfulness, to help you feel more like yourself again.</p>
+        <a href="/contact" class="btn" data-link>Book a free consultation</a>
       </div>
-      <img src="therapy-anxiety.webp" alt="Light and breathing room" class="photo-real">
     </div>
+  </section>
+  <section class="wrap" style="max-width:720px;padding-top:0;">
+    <p style="color:var(--taupe-soft);font-size:17px;text-align:center;">Whether it's constant worry, low motivation, or feeling disconnected from things you used to enjoy, anxiety and depression can make daily life feel heavier than it should. Using CBT and mindfulness-based approaches, we'll identify the patterns keeping you stuck and build practical tools to use between sessions, not just inside them.</p>
   </section>
   <section class="wrap">
     <div class="photo-scrim">
@@ -1203,29 +1286,37 @@
     </div>
     <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
-  <section>
-    <div class="cta-band">
-      <h2>Ready to feel more like yourself?</h2>
-      <p>A free 15-minute consultation is a low-pressure first step.</p>
-      <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+  <section class="cta-card-section">
+    <div class="cta-card">
+      <img src="therapy-overview.webp" alt="">
+      <div class="cc-scrim"></div>
+      <div class="cc-inner">
+        <h2>Ready to feel more like yourself?</h2>
+        <p>A free 15-minute consultation is a low-pressure first step.</p>
+        <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+      </div>
     </div>
   </section>
 </div>
 
 <div data-view="services-relationships">
-  <section class="page-hero wrap">
-    <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
-    <h1>Relationships and family</h1>
-    <p>Couples counseling, parenting support, and family conflict work - making room for every voice at the table, not just the loudest one.</p>
-  </section>
-  <section class="wrap">
-    <div class="grid-2">
-      <img src="therapy-relationships.webp" alt="Connection" class="photo-real">
-      <div>
-        <p style="color:var(--taupe-soft);margin-bottom:14px;">Whether it's a couple working through a rough patch, a parent navigating a difficult season with a child, or a family in ongoing conflict, relationship work is about making room for every voice at the table.</p>
-        <p style="color:var(--taupe-soft);">I draw on attachment-based and family systems approaches to help everyone involved feel heard, while building healthier patterns of communication going forward.</p>
+  <section class="meet-band">
+    <div class="wrap">
+      <div class="grid-2">
+        <div>
+          <a href="/services" class="subpage-back" data-link style="background:transparent;border-color:rgba(243,236,228,.4);color:var(--cream);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
+          <span class="script" style="margin-top:16px;">Room at the table</span>
+          <h1 style="color:#fff;font-size:clamp(32px,4vw,44px);margin-bottom:16px;">Relationships and family</h1>
+          <p>Couples counseling, parenting support, and family conflict work - making room for every voice at the table, not just the loudest one.</p>
+        </div>
+        <div class="meet-photo-wrap">
+          <img src="therapy-relationships.webp" alt="">
+        </div>
       </div>
     </div>
+  </section>
+  <section class="wrap" style="max-width:720px;">
+    <p style="color:var(--taupe-soft);font-size:17px;text-align:center;">Whether it's a couple working through a rough patch, a parent navigating a difficult season with a child, or a family in ongoing conflict, relationship work is about making room for every voice at the table. I draw on attachment-based and family systems approaches to help everyone involved feel heard, while building healthier patterns of communication going forward.</p>
   </section>
   <section class="wrap">
     <h2 style="font-size:clamp(28px,3.2vw,34px);text-align:center;margin-bottom:40px;">Support for every kind of relationship</h2>
@@ -1270,47 +1361,53 @@
     </div>
     <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
-  <section>
-    <div class="cta-band">
-      <h2>Ready to work on this together?</h2>
-      <p>A free 15-minute consultation is a low-pressure first step.</p>
-      <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+  <section class="cta-card-section">
+    <div class="cta-card">
+      <img src="contact-photo.webp" alt="">
+      <div class="cc-scrim"></div>
+      <div class="cc-inner">
+        <h2>Ready to work on this together?</h2>
+        <p>A free 15-minute consultation is a low-pressure first step.</p>
+        <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+      </div>
     </div>
   </section>
 </div>
 
 <div data-view="services-young-adults">
-  <section class="page-hero wrap">
-    <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
-    <h1>Young adults &amp; college students</h1>
-    <p>The years after high school - college, a first apartment, a first real job - bring a kind of pressure that's hard to explain to people who aren't in it. Figuring out who you are while everyone expects you to already know can be exhausting.</p>
-  </section>
-
   <section class="wrap">
-    <div class="grid-2">
-      <img src="contact-photo.webp" alt="" class="photo-real">
-      <div>
-        <p style="color:var(--taupe-soft);margin-bottom:14px;">Wherever you're at - away at school, back home, or newly on your own - therapy can be one steady thing while everything else is in flux.</p>
-        <p style="color:var(--taupe-soft);">In-person in Oakdale or online, scheduled around a college or early-career calendar - because life at this stage rarely fits into a 9-to-5.</p>
+    <div class="yad-hero">
+      <div class="yad-hero-copy">
+        <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
+        <h1>Young adults &amp; college students</h1>
+        <p>The years after high school bring a kind of pressure that's hard to explain to people who aren't in it. Figuring out who you are while everyone expects you to already know can be exhausting.</p>
+        <a href="/contact" class="btn" data-link>Book a free consultation</a>
+      </div>
+      <div class="yad-collage">
+        <div class="yc-block"></div>
+        <img src="contact-photo.webp" alt="" class="yc-main">
+        <img src="rates-texture.webp" alt="" class="yc-second">
       </div>
     </div>
+  </section>
+
+  <section class="wrap" style="max-width:720px;padding-top:0;">
+    <p style="color:var(--taupe-soft);font-size:17px;text-align:center;">Wherever you're at - away at school, back home, or newly on your own - therapy can be one steady thing while everything else is in flux. In-person in Oakdale or online, scheduled around a college or early-career calendar, because life at this stage rarely fits into a 9-to-5.</p>
   </section>
 
   <section class="wrap">
     <div class="split-huge" style="align-items:center;">
       <div>
         <h2 style="margin-bottom:14px;">Common threads I see</h2>
-        <p style="font-size:16px;color:var(--taupe-soft);">Every story's different, but these come up again and again.</p>
+        <p style="font-size:16px;color:var(--taupe-soft);margin-bottom:24px;">Every story's different, but these come up again and again.</p>
       </div>
-      <div style="background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(43,52,56,.1);padding:36px 40px;">
-        <div class="def-list" style="row-gap:16px;">
-          <div class="def-item"><h3>Academic pressure</h3><p>Burnout, motivation, and the weight of expectations.</p></div>
-          <div class="def-item"><h3>Homesickness</h3><p>Building a new support system somewhere unfamiliar.</p></div>
-          <div class="def-item"><h3>Identity &amp; independence</h3><p>Figuring out who you are and what's next.</p></div>
-          <div class="def-item"><h3>Relationship changes</h3><p>Friendships and relationships shifting as life does.</p></div>
-          <div class="def-item" style="border-bottom:none;"><h3>Anxiety &amp; mood</h3><p>Support if things got harder after a big move.</p></div>
-        </div>
-      </div>
+      <ul class="plain-list">
+        <li><strong style="color:var(--taupe);">Academic pressure</strong> - burnout, motivation, and the weight of expectations.</li>
+        <li><strong style="color:var(--taupe);">Homesickness</strong> - building a new support system somewhere unfamiliar.</li>
+        <li><strong style="color:var(--taupe);">Identity &amp; independence</strong> - figuring out who you are and what's next.</li>
+        <li><strong style="color:var(--taupe);">Relationship changes</strong> - friendships and relationships shifting as life does.</li>
+        <li><strong style="color:var(--taupe);">Anxiety &amp; mood</strong> - support if things got harder after a big move.</li>
+      </ul>
     </div>
   </section>
 
@@ -1355,30 +1452,33 @@
     </div>
     <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
-  <section>
-    <div class="cta-band">
-      <h2>Figuring out what's next?</h2>
-      <p>A free 15-minute consultation is a low-pressure first step.</p>
-      <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+  <section class="cta-card-section">
+    <div class="cta-card">
+      <img src="home-quote.webp" alt="">
+      <div class="cc-scrim"></div>
+      <div class="cc-inner">
+        <h2>Figuring out what's next?</h2>
+        <p>A free 15-minute consultation is a low-pressure first step.</p>
+        <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+      </div>
     </div>
   </section>
 </div>
 
 <div data-view="services-faith-based">
-  <section class="page-hero wrap">
-    <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
-    <h1>Christian &amp; faith-based therapy</h1>
-    <p>For many people, faith is a central part of how they understand themselves, their relationships, and their healing. If that's true for you, we don't have to leave it at the door - we can talk about how your faith fits into the work we do together, at whatever level feels right to you.</p>
+  <section class="wrap">
+    <div class="arch-hero">
+      <div class="arch-hero-copy">
+        <a href="/services" class="subpage-back" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All therapy</a>
+        <h1>Christian &amp; faith-based therapy</h1>
+        <p>For many people, faith is a central part of how they understand themselves, their relationships, and their healing.</p>
+      </div>
+      <img src="home-accent.webp" alt="" class="arch-frame">
+    </div>
   </section>
 
-  <section class="wrap">
-    <div class="grid-2">
-      <div>
-        <p style="color:var(--taupe-soft);margin-bottom:14px;">This isn't a separate kind of therapy so much as an openness to bring your whole self into the room - including your faith, if that's part of how you make sense of things.</p>
-        <p style="color:var(--taupe-soft);">In-person in Oakdale or online, individual sessions - whatever level of faith-integration feels right to you.</p>
-      </div>
-      <img src="home-accent.webp" alt="" class="photo-real">
-    </div>
+  <section class="wrap" style="max-width:720px;padding-top:0;">
+    <p style="color:var(--taupe-soft);font-size:17px;text-align:center;">This isn't a separate kind of therapy so much as an openness to bring your whole self into the room, including your faith, if that's part of how you make sense of things. We can talk about how your faith fits into the work we do together, at whatever level feels right to you - in person in Oakdale or online.</p>
   </section>
 
   <section class="wrap">
@@ -1386,14 +1486,12 @@
       <div>
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--taupe);line-height:1.4;">"Whether faith is central to how you approach healing or just one piece of the picture, it has a place here."</p>
       </div>
-      <div style="background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(43,52,56,.1);padding:36px 40px;">
-        <div class="def-list" style="row-gap:16px;">
-          <div class="def-item"><h3>Prayer &amp; scripture</h3><p>Woven into sessions if that's part of how you process.</p></div>
-          <div class="def-item"><h3>Faith &amp; mental health tension</h3><p>Working through guilt, doubt, or "why is this happening."</p></div>
-          <div class="def-item"><h3>Faith transitions</h3><p>Support through a crisis of faith or shifting beliefs.</p></div>
-          <div class="def-item" style="border-bottom:none;"><h3>Values-aligned care</h3><p>You won't be asked to set your beliefs aside.</p></div>
-        </div>
-      </div>
+      <ul class="plain-list">
+        <li><strong style="color:var(--taupe);">Prayer &amp; scripture</strong> - woven into sessions if that's part of how you process.</li>
+        <li><strong style="color:var(--taupe);">Faith &amp; mental health tension</strong> - working through guilt, doubt, or "why is this happening."</li>
+        <li><strong style="color:var(--taupe);">Faith transitions</strong> - support through a crisis of faith or shifting beliefs.</li>
+        <li><strong style="color:var(--taupe);">Values-aligned care</strong> - you won't be asked to set your beliefs aside.</li>
+      </ul>
     </div>
   </section>
 
@@ -1437,11 +1535,15 @@
     </div>
     <p style="text-align:center;font-size:13px;color:var(--taupe-soft);margin-top:24px;">In-network with major Minnesota plans - see the full list on the <a href="/rates" data-link style="color:var(--slate-dark);text-decoration:underline;">Rates and Insurance page</a>.</p>
   </section>
-  <section>
-    <div class="cta-band">
-      <h2>Curious if this is a good fit?</h2>
-      <p>A free 15-minute consultation is a low-pressure way to find out.</p>
-      <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+  <section class="cta-card-section">
+    <div class="cta-card">
+      <img src="faq-accent.webp" alt="">
+      <div class="cc-scrim"></div>
+      <div class="cc-inner">
+        <h2>Curious if this is a good fit?</h2>
+        <p>A free 15-minute consultation is a low-pressure way to find out.</p>
+        <a href="/contact" class="btn" data-link>Schedule a free consultation</a>
+      </div>
     </div>
   </section>
 </div>
