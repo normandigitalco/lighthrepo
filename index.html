@@ -89,7 +89,7 @@
      padding lives on .home-hero (the outer <section>); the element that also
      carries .wrap (.hhs-grid, a nested <div>) never gets its own shorthand
      padding, so .wrap's built-in side padding can never be zeroed out. */
-  .home-hero{background:var(--taupe);overflow:hidden;position:relative;padding-top:150px;padding-bottom:100px;}
+  .home-hero{background:var(--taupe);overflow:hidden;position:relative;padding-top:150px;padding-bottom:120px;}
   .hhs-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.08fr;column-gap:64px;row-gap:30px;align-items:center;
     grid-template-areas:"text photo" "cta photo";}
   .hhs-text{grid-area:text;max-width:500px;}
@@ -97,9 +97,11 @@
   .hhs-h1{font-size:clamp(46px,6.2vw,88px);line-height:1.02;margin:0 0 22px;font-weight:600;letter-spacing:-.01em;color:var(--cream);}
   .hhs-text p.intro{font-size:17px;color:rgba(243,236,228,.85);max-width:440px;margin:0;}
   .hhs-cta{grid-area:cta;}
-  .hhs-photo-wrap{grid-area:photo;max-width:520px;margin:0 0 0 auto;}
-  .hhs-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;border:7px solid var(--slate);box-shadow:0 30px 60px rgba(15,20,30,.4);display:block;}
-  .hhs-caption{display:flex;align-items:baseline;gap:10px;margin-top:18px;}
+  .hhs-photo-wrap{grid-area:photo;max-width:480px;margin:0 44px 44px auto;}
+  .hhs-photo-frame{position:relative;}
+  .hhs-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;border:7px solid var(--slate);box-shadow:0 30px 60px rgba(15,20,30,.4);display:block;position:relative;z-index:1;}
+  .hhs-detail{position:absolute;left:-44px;bottom:-44px;width:42%;aspect-ratio:1/1;object-fit:cover;box-shadow:-16px 16px 0 0 var(--cream);z-index:2;display:block;}
+  .hhs-caption{display:flex;align-items:baseline;gap:10px;margin-top:64px;}
   .hhs-caption .name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);}
   .hhs-caption .role{font-size:12px;color:rgba(243,236,228,.6);}
   .hhs-caption .divider{width:5px;height:5px;border-radius:50%;background:var(--slate);flex-shrink:0;}
@@ -108,8 +110,10 @@
     .hhs-grid{grid-template-columns:1fr;row-gap:32px;grid-template-areas:"text" "photo" "cta";}
     .hhs-text{max-width:100%;}
     .hhs-text p.intro{max-width:100%;}
-    .hhs-photo-wrap{max-width:360px;margin:0 auto;}
-    .hhs-caption{justify-content:center;}
+    .hhs-photo-wrap{max-width:300px;margin:0 auto 28px;}
+    .hhs-detail{left:-22px;bottom:-22px;box-shadow:-10px 10px 0 0 var(--cream);}
+    .hhs-caption{flex-direction:column;align-items:center;gap:2px;}
+    .hhs-caption .divider{display:none;}
     .hhs-cta{margin-top:14px;text-align:center;}
   }
 
@@ -416,14 +420,14 @@
   @media(max-width:820px){.circle-trio{grid-template-columns:1fr;gap:44px;max-width:340px;}}
 
   /* Dark feature band - full-bleed navy canvas, big serif headline, framed photo (Soul's Nest inner-page hero style) */
-  .dark-feature-band{background:var(--taupe);padding:130px 0;overflow:hidden;}
-  .dfb-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
-  .dfb-copy .eyebrow{color:#CBDAE0;}
+  .dark-feature-band{background:var(--taupe);padding-top:120px;padding-bottom:64px;overflow:hidden;}
+  .dfb-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start;}
+  .dfb-copy .dfb-label{font-size:15px;font-weight:400;color:rgba(203,218,224,.9);margin-bottom:16px;}
   .dfb-h1{color:var(--cream);font-size:clamp(40px,5.2vw,64px);line-height:1.08;margin:14px 0 20px;font-weight:600;}
   .dfb-copy p{color:rgba(243,236,228,.82);font-size:17px;max-width:440px;margin-bottom:28px;}
   .dfb-photo-wrap{position:relative;}
   .dfb-photo{width:100%;height:460px;object-fit:cover;border:7px solid var(--slate);box-shadow:0 30px 60px rgba(15,20,30,.4);display:block;}
-  @media(max-width:860px){.dark-feature-band{padding:80px 0;}.dfb-grid{grid-template-columns:1fr;gap:32px;text-align:center;}.dfb-copy p{margin-left:auto;margin-right:auto;}.dfb-photo{height:320px;}}
+  @media(max-width:860px){.dark-feature-band{padding-top:72px;padding-bottom:40px;}.dfb-grid{grid-template-columns:1fr;gap:32px;text-align:center;}.dfb-copy p{margin-left:auto;margin-right:auto;}.dfb-photo{height:320px;}}
 
   /* Rates page - asymmetric hero, no longer a centered stack */
   .rates-hero{display:flex;align-items:center;gap:64px;padding-top:110px;padding-bottom:110px;min-height:620px;}
@@ -634,7 +638,10 @@
         <p class="intro">Therapy for teens, adults, and families navigating ADHD, life transitions, trauma, and more - with warmth, curiosity, and practical tools for lasting change.</p>
       </div>
       <div class="hhs-photo-wrap">
-        <img src="photo.webp" alt="Heather Feikema, LICSW" class="hhs-photo">
+        <div class="hhs-photo-frame">
+          <img src="photo.webp" alt="Heather Feikema, LICSW" class="hhs-photo">
+          <img src="home-accent.webp" alt="" class="hhs-detail">
+        </div>
         <p class="hhs-caption"><span class="name">Heather Feikema</span><span class="divider"></span><span class="role">LICSW, Licensed Therapist</span></p>
       </div>
       <div class="hhs-cta">
@@ -1765,7 +1772,7 @@
   <section class="dark-feature-band">
     <div class="wrap dfb-grid">
       <div class="dfb-copy">
-        <p class="eyebrow">Get in touch</p>
+        <p class="dfb-label">Get in touch</p>
         <h1 class="dfb-h1">Let's find a time to talk.</h1>
         <p>Reach out for a free 15-minute consultation - no pressure, just a chance to see if we're a good fit, with no obligation to book anything further afterward.</p>
         <a href="tel:6513218943" class="btn" style="background:transparent;border:1.5px solid var(--cream);color:var(--cream);">Call 651-321-8943</a>
@@ -1776,7 +1783,7 @@
     </div>
   </section>
 
-  <section class="wrap" style="padding-top:0;">
+  <section class="wrap" style="padding-top:64px;">
     <div class="contact-row">
       <div class="contact-item">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-6-5.7-6-11a6 6 0 1 1 12 0c0 5.3-6 11-6 11z"/><circle cx="12" cy="10" r="2.3"/></svg></div>
