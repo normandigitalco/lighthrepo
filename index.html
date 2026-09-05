@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#283A50">
 <title>Heather Feikema Therapy | LICSW in Oakdale, MN</title>
 <meta name="description" content="Therapy for teens, adults, and families in Oakdale, MN and online across Minnesota. ADHD, life transitions, trauma, and more with Heather Feikema, LICSW.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -209,7 +210,7 @@
   .subpage-back{font-size:13px;font-weight:500;color:var(--taupe);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;padding:8px 16px;border:1px solid rgba(40,58,80,.25);border-radius:999px;background:var(--cream);align-self:center;transition:background-color .18s ease,border-color .18s ease;}
   .subpage-back svg{transition:transform .18s ease;}
   @media(hover:hover){.subpage-back:hover{background:var(--sand);border-color:rgba(40,58,80,.35);}.subpage-back:hover svg{transform:translateX(-3px);}}
-  .reveal-on main section{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal-on main section{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;}
   .reveal-on main section.is-visible{opacity:1;transform:translateY(0);}
   @media(prefers-reduced-motion:reduce){.reveal-on main section{opacity:1;transform:none;transition:none;}}
   @media(hover:hover){.subpage-back:hover{border-color:var(--slate);color:var(--slate-dark);}}
@@ -563,10 +564,6 @@
 
   .tag-row{display:flex;flex-wrap:wrap;gap:10px;}
   .tag{background:var(--sand);color:var(--slate-dark);font-size:13px;font-weight:500;padding:8px 16px;border-radius:999px;}
-  .faq-jumpnav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
-  .faq-jumpnav a{background:var(--sand);color:var(--taupe);font-size:13.5px;font-weight:500;padding:9px 18px;
-    border-radius:999px;transition:background .18s ease;}
-  @media(hover:hover){.faq-jumpnav a:hover{background:var(--slate);color:var(--cream);}}
 
   /* ---------- staggered photo-card row (asymmetric, not a rigid grid) ---------- */
   .stagger-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;}
@@ -1954,16 +1951,7 @@
     </div>
   </section>
 
-  <section class="wrap" style="padding-top:36px;padding-bottom:0;">
-    <div class="faq-jumpnav">
-      <a href="#cat-start">Getting started</a>
-      <a href="#cat-logistics">Sessions &amp; logistics</a>
-      <a href="#cat-care">Care &amp; approach</a>
-      <a href="#cat-rates">Rates &amp; policies</a>
-    </div>
-  </section>
-
-  <section class="wrap" style="padding-top:96px;padding-bottom:80px;">
+  <section class="wrap" style="padding-top:56px;padding-bottom:80px;">
    <div class="faq-open-list">
 
     <div class="faq-cat-block" id="cat-start">
@@ -2269,7 +2257,7 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, {rootMargin:'0px 0px -8% 0px', threshold:0.1});
+    }, {rootMargin:'0px 0px 300px 0px', threshold:0});
     document.querySelectorAll('main section').forEach(function(sec){ revealObserver.observe(sec); });
   }
 
