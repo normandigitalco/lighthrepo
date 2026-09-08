@@ -34,7 +34,6 @@
   /* ---------- Times New Roman display treatment (Sage Hill influence) ---------- */
   .tnr-display{font-family:"Times New Roman",Times,Georgia,serif !important;font-weight:300 !important;
     letter-spacing:-.035em !important;line-height:.95 !important;}
-  .hhs-h1.tnr-display{font-weight:300 !important;}
 
   /* ---------- horizontal scroll row (Mindbloom mobile pattern) ---------- */
   @media(max-width:760px){
@@ -49,12 +48,29 @@
     box-shadow:0 12px 30px -8px rgba(40,58,80,.35);}
   @media(hover:hover){.btn:hover:after{transform:translateX(4px);}}
   @media(hover:hover){.btn:hover{background:var(--slate-dark);}}
-  header{position:sticky;top:0;z-index:50;background:rgba(253,251,247,.94);backdrop-filter:blur(6px);border-bottom:1px solid rgba(40,58,80,.22);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:8px 28px;max-width:1080px;margin:0 auto;}
-  .logo-img{height:76px;width:auto;display:block;}
-  @media(max-width:700px){.nav-inner{padding:6px 20px;}.logo-img{height:56px;}}
-  .logo{display:inline-flex;align-items:center;}
-  nav.links{display:flex;align-items:center;gap:30px;font-size:16px;}
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(243,236,228,.94);backdrop-filter:blur(6px);border-bottom:1px solid rgba(40,58,80,.22);box-shadow:0 2px 16px rgba(40,58,80,.05);transition:background-color .7s ease, border-color .7s ease, box-shadow .7s ease, color .7s ease, backdrop-filter .7s ease;}
+  body{padding-top:var(--header-h,88px);}
+  /* Home page only: header rides transparent over the full-bleed hero photo until the user scrolls */
+  body.is-home{padding-top:0;}
+  body.is-home:not(.nav-solid) header{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:transparent;box-shadow:none;color:#fff;}
+  body.is-home:not(.nav-solid) header .logo-name,
+  body.is-home:not(.nav-solid) header .nav-item>a,
+  body.is-home:not(.nav-solid) header .dropdown-trigger,
+  body.is-home:not(.nav-solid) header .menu-toggle{color:#fff;text-shadow:0 1px 4px rgba(20,20,22,.35);}
+  body.is-home:not(.nav-solid) header .btn.nav-cta{background:#fff;color:var(--taupe);text-shadow:none;}
+  @media(hover:hover){body.is-home:not(.nav-solid) header .nav-item>a:hover, body.is-home:not(.nav-solid) header .dropdown-trigger:hover{color:#fff;opacity:.8;}}
+  body.is-home:not(.nav-solid) header nav.links.open .nav-item>a,
+  body.is-home:not(.nav-solid) header nav.links.open .dropdown-trigger,
+  body.is-home:not(.nav-solid) header nav.links.open .btn,
+  body.is-home:not(.nav-solid) header .menu-toggle[aria-expanded="true"]{color:var(--taupe);text-shadow:none;}
+  body.is-home:not(.nav-solid) header nav.links.open .btn{background:var(--slate);color:var(--cream);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:1240px;margin:0 auto;}
+  .logo{display:inline-flex;align-items:center;border-radius:4px;}
+  a:focus, button:focus{outline:none;box-shadow:0 0 0 3px rgba(40,58,80,.35);}
+  a:focus:not(:focus-visible), button:focus:not(:focus-visible){box-shadow:none;}
+  .logo-name{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;letter-spacing:.01em;white-space:nowrap;}
+  @media(max-width:700px){.nav-inner{padding:10px 20px;}.logo-name{font-size:19px;}}
+  nav.links{display:flex;align-items:center;gap:42px;font-size:16px;}
   .nav-cta{padding:12px 22px;font-size:14px;}
   .nav-item{position:relative;}
   .nav-item>a, .dropdown-trigger{padding:8px 0;cursor:pointer;display:inline-flex;align-items:center;gap:5px;background:none;border:none;font-family:inherit;font-size:16px;font-weight:500;color:inherit;}
@@ -68,14 +84,10 @@
   @media(hover:hover){.dropdown a:hover{background:var(--sand);color:var(--taupe);}}
   .menu-toggle{display:none;align-items:center;justify-content:center;background:none;border:none;color:var(--taupe);cursor:pointer;padding:9px;margin:-9px;line-height:1;position:relative;z-index:210;}
   .menu-toggle svg{display:block;width:26px;height:26px;}
-  .nav-close{display:none;align-items:center;justify-content:center;background:none;border:none;color:var(--taupe);cursor:pointer;padding:9px;position:absolute;top:20px;right:20px;}
-  .nav-close svg{display:block;width:26px;height:26px;}
-  @media(max-width:820px){
+  @media(max-width:1150px){
     nav.links{display:none;}
     .menu-toggle{display:flex;}
     nav.links.open{display:flex;flex-direction:column;align-items:center;gap:6px;position:fixed;top:0;left:0;right:0;bottom:0;height:100dvh;background:var(--cream);border-bottom:none;padding:96px 32px 40px;overflow-y:auto;z-index:200;}
-    nav.links.open .nav-close{display:flex;}
-    body.nav-open .menu-toggle{visibility:hidden;pointer-events:none;}
     nav.links.open a, nav.links.open .dropdown-trigger{font-size:19px;padding:10px 0;}
     nav.links.open .dropdown-trigger{justify-content:center;}
     nav.links.open .btn{margin-top:16px;font-size:16px;padding:16px 38px;}
@@ -108,38 +120,7 @@
   .tint-navy .tl-item p{color:rgba(243,236,228,.92);}
   .tint-navy .card h3{color:var(--cream);}
   .tint-navy .card p{color:rgba(243,236,228,.92);}
-  /* Home hero - bold navy canvas, big serif headline, framed portrait.
-     Structural rule to avoid the recurring padding-shorthand bug: section-level
-     padding lives on .home-hero (the outer <section>); the element that also
-     carries .wrap (.hhs-grid, a nested <div>) never gets its own shorthand
-     padding, so .wrap's built-in side padding can never be zeroed out. */
-  .home-hero{background:var(--taupe);overflow:hidden;position:relative;padding-top:150px;padding-bottom:120px;}
-  .hhs-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.08fr;column-gap:64px;row-gap:30px;align-items:center;
-    grid-template-areas:"text photo" "cta photo";}
-  .hhs-text{grid-area:text;max-width:500px;}
   .hhs-subline{font-size:15px;font-weight:400;color:rgba(203,218,224,.9);margin-bottom:16px;}
-  .hhs-h1{font-size:clamp(46px,6.2vw,88px);line-height:1.02;margin:0 0 22px;font-weight:600;letter-spacing:-.01em;color:var(--cream);}
-  .hhs-text p.intro{font-size:17px;color:rgba(243,236,228,.85);max-width:440px;margin:0;}
-  .hhs-cta{grid-area:cta;}
-  .hhs-photo-wrap{grid-area:photo;max-width:480px;margin:0 44px 44px auto;}
-  .hhs-photo-frame{position:relative;}
-  .hhs-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;border:7px solid var(--slate);box-shadow:0 30px 60px rgba(15,20,30,.4);display:block;position:relative;z-index:1;}
-  .hhs-detail{position:absolute;left:-44px;bottom:-44px;width:42%;aspect-ratio:1/1;object-fit:cover;box-shadow:-16px 16px 0 0 var(--cream);z-index:2;display:block;}
-  .hhs-caption{display:flex;align-items:baseline;gap:10px;margin-top:64px;}
-  .hhs-caption .name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);}
-  .hhs-caption .role{font-size:12px;color:rgba(243,236,228,.6);}
-  .hhs-caption .divider{width:5px;height:5px;border-radius:50%;background:var(--slate);flex-shrink:0;}
-  @media(max-width:860px){
-    .home-hero{padding-top:44px;padding-bottom:48px;}
-    .hhs-grid{grid-template-columns:1fr;row-gap:24px;grid-template-areas:"text" "photo" "cta";}
-    .hhs-text{max-width:100%;}
-    .hhs-text p.intro{max-width:100%;}
-    .hhs-photo-wrap{max-width:260px;margin:0 auto 24px;}
-    .hhs-detail{left:-22px;bottom:-22px;box-shadow:-10px 10px 0 0 var(--cream);}
-    .hhs-caption{flex-direction:column;align-items:center;gap:2px;margin-top:36px;}
-    .hhs-caption .divider{display:none;}
-    .hhs-cta{margin-top:-8px;text-align:center;}
-  }
 
   .page-bleed{background:var(--sand);overflow:hidden;}
   .bleed-flex{display:flex;align-items:stretch;min-height:440px;}
@@ -172,12 +153,24 @@
   /* Life transitions hero - full-bleed photo, bottom-up scrim */
   .specialty-hero-bleed{position:relative;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;}
   .specialty-hero-bleed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-  .specialty-hero-bleed .shb-scrim{position:absolute;inset:0;background:linear-gradient(0deg, rgba(40,58,80,.9) 0%, rgba(40,58,80,.5) 55%, rgba(40,58,80,.08) 100%);}
+  .specialty-hero-bleed .shb-scrim{position:absolute;inset:0;background:linear-gradient(0deg, rgba(20,20,22,.85) 0%, rgba(20,20,22,.45) 55%, rgba(20,20,22,.05) 100%);}
   .specialty-hero-bleed .shb-inner{position:relative;z-index:2;padding-top:56px;padding-bottom:56px;}
   .specialty-hero-bleed .subpage-back{align-self:flex-start;}
   .specialty-hero-bleed h1{color:#fff;font-size:clamp(40px,5.5vw,64px);margin:16px 0 14px;}
   .specialty-hero-bleed p{color:rgba(243,236,228,.92);font-size:17px;max-width:480px;}
   @media(max-width:760px){.specialty-hero-bleed{min-height:480px;}.specialty-hero-bleed h1{font-size:clamp(34px,9vw,48px);}}
+  .home-hero-bleed{min-height:100vh;min-height:100lvh;align-items:stretch;}
+  .home-hero-bleed img{object-position:center center;}
+  .home-hero-bleed .shb-inner{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:44px;}
+  .home-hero-bleed .hhs-subline{font-size:15px;font-weight:400;color:rgba(243,236,228,.85);margin-bottom:16px;}
+  .home-hero-bleed h1{font-size:clamp(44px,6vw,86px);line-height:1.18;font-weight:600;letter-spacing:-.015em;max-width:920px;margin-left:auto;margin-right:auto;text-shadow:0 2px 20px rgba(20,20,22,.4);}
+  .home-hero-bleed .intro{margin-top:20px;margin-bottom:32px;max-width:620px;margin-left:auto;margin-right:auto;color:#fff;text-shadow:0 2px 16px rgba(20,20,22,.55);}
+  @media(max-width:760px){
+    .home-hero-bleed{min-height:105vh;align-items:stretch;}
+    .home-hero-bleed .shb-inner{justify-content:space-between;padding-top:96px;padding-bottom:56px;}
+    .home-hero-bleed .hero-lower{display:flex;flex-direction:column;align-items:center;}
+  }
+  
 
   /* Anxiety hero - arched photo frame, contemplative */
   .arch-hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:56px 0 72px;}
@@ -696,10 +689,11 @@
 
 <header>
   <div class="nav-inner">
-    <a href="/" class="logo" data-link><img src="logo.webp" alt="Heather Feikema Therapy" class="logo-img"></a>
+    <a href="/" class="logo" data-link aria-label="Heather Feikema Therapy, home">
+      <span class="logo-name">Heather Feikema Therapy</span>
+    </a>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <nav class="links" id="navLinks">
-      <button class="nav-close" id="navClose" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       <div class="nav-item"><a href="/" data-link>Home</a></div>
       <div class="nav-item"><a href="/about" data-link>About</a></div>
       <div class="nav-item">
@@ -726,21 +720,15 @@
 <main>
 
 <div data-view="home">
-  <section class="home-hero">
-    <div class="wrap hhs-grid">
-      <div class="hhs-text">
-        <p class="hhs-subline">Based in Oakdale, MN &middot; In person &amp; online</p>
-        <h1 class="hhs-h1 tnr-display">A Space To Notice, <br class="hero-break">And To Grow</h1>
+  <section class="specialty-hero-bleed home-hero-bleed">
+    <picture>
+      <source media="(max-width:760px)" srcset="photo-mobile-top2.webp">
+      <img src="hero-wide-v5.webp" alt="Heather Feikema, LICSW, smiling outdoors">
+    </picture>
+    <div class="wrap shb-inner">
+      <h1 class="tnr-display">A Space To Notice, And To Grow</h1>
+      <div class="hero-lower">
         <p class="intro">Therapy for teens, adults, and families navigating ADHD, life transitions, trauma, and more - with warmth, curiosity, and practical tools for lasting change.</p>
-      </div>
-      <div class="hhs-photo-wrap">
-        <div class="hhs-photo-frame">
-          <img src="photo.webp" alt="Heather Feikema, LICSW" class="hhs-photo">
-          <img src="home-accent.webp" alt="" class="hhs-detail">
-        </div>
-        <p class="hhs-caption"><span class="name">Heather Feikema</span><span class="divider"></span><span class="role">LICSW, Licensed Therapist</span></p>
-      </div>
-      <div class="hhs-cta">
         <a href="/contact" class="btn" data-link>Book a free consultation</a>
       </div>
     </div>
@@ -854,7 +842,6 @@
     <div class="wrap">
       <div class="grid-2">
         <div>
-          <p class="eyebrow">The person behind it</p>
           <span class="script">Meet Heather</span>
           <h3>A space to be heard, without judgment.</h3>
           <p>I'm a Licensed Independent Clinical Social Worker with over 20 years of experience helping children, teens, adults, and families navigate life's hardest moments. I'll ask you to be curious with me - and I'll always meet you without judgment.</p>
@@ -2151,6 +2138,27 @@
 (function(){
   if('scrollRestoration' in history){ try{ history.scrollRestoration = 'manual'; }catch(e){} }
 
+  window.addEventListener('pageshow', function(e){
+    if(e.persisted && document.activeElement && document.activeElement !== document.body){
+      document.activeElement.blur();
+    }
+  });
+
+  var headerEl0 = document.querySelector('header');
+  function setHeaderHeightVar(){
+    document.documentElement.style.setProperty('--header-h', headerEl0.offsetHeight + 'px');
+  }
+  setHeaderHeightVar();
+  window.addEventListener('resize', setHeaderHeightVar);
+
+  function updateNavSolid(){
+    var solid = !document.body.classList.contains('is-home') || window.scrollY > 40;
+    document.body.classList.toggle('nav-solid', solid);
+    var themeColorEl = document.querySelector('meta[name="theme-color"]');
+    if(themeColorEl){ themeColorEl.setAttribute('content', solid ? '#F3ECE4' : '#283A50'); }
+  }
+  window.addEventListener('scroll', updateNavSolid, {passive:true});
+
   var ICON_MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
   var ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 
@@ -2190,6 +2198,9 @@
     var view = pathToView(path);
     var hash = path.split('#')[1] || '';
     views.forEach(function(v){ v.classList.toggle('active', v.getAttribute('data-view') === view); });
+    document.body.classList.toggle('is-home', view === 'home');
+    setHeaderHeightVar();
+    updateNavSolid();
     if(push){
       try{ history.pushState({view:view}, '', viewToPath(view) + (hash ? '#'+hash : '')); }
       catch(e){ /* pushState unavailable in this context - view already switched above */ }
@@ -2209,31 +2220,12 @@
     } else {
       window.scrollTo({top:0, left:0, behavior:'instant'});
     }
-    closeMobileNav();
-    closeAllDropdowns();
-  }
-
-  function openMobileNav(){
-    var navLinks = document.getElementById('navLinks');
-    navLinks.classList.add('open');
-    /* Move the overlay out of the sticky <header> while open. Some mobile
-       browsers wrongly treat a position:sticky ancestor as the containing
-       block for a position:fixed child once it has scrolled/stuck, which
-       breaks this exact menu after scrolling past the top of the page. */
-    document.body.appendChild(navLinks);
-    document.body.classList.add('nav-open');
-    document.getElementById('menuToggle').setAttribute('aria-expanded', 'true');
-  }
-
-  function closeMobileNav(){
-    var navLinks = document.getElementById('navLinks');
-    navLinks.classList.remove('open');
-    var navInner = document.querySelector('.nav-inner');
-    if(navLinks.parentElement !== navInner){
-      navInner.appendChild(navLinks);
-    }
+    document.getElementById('navLinks').classList.remove('open');
     document.body.classList.remove('nav-open');
-    document.getElementById('menuToggle').setAttribute('aria-expanded', 'false');
+    var toggleBtn = document.getElementById('menuToggle');
+    toggleBtn.innerHTML = ICON_MENU;
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    closeAllDropdowns();
   }
 
   document.addEventListener('click', function(e){
@@ -2262,8 +2254,12 @@
 
   window.addEventListener('popstate', function(){ render(location.pathname, false); });
 
-  document.getElementById('menuToggle').addEventListener('click', openMobileNav);
-  document.getElementById('navClose').addEventListener('click', closeMobileNav);
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    var isOpen = document.getElementById('navLinks').classList.toggle('open');
+    document.body.classList.toggle('nav-open', isOpen);
+    this.innerHTML = isOpen ? ICON_CLOSE : ICON_MENU;
+    this.setAttribute('aria-expanded', isOpen);
+  });
 
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){ btn.parentElement.classList.toggle('open'); });
